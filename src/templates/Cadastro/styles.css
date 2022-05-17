@@ -1,0 +1,139 @@
+.cadastro-declink{
+  text-decoration: none;
+}
+
+.cadastro-dectext{
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.cadastro-dectext2{
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.container-cadastro{
+  background-color:#f8f8f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+.cadastro-form{
+  background-image: url("../Images/ilustracao.png");
+  background-position: center;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 15px;
+
+  height: 545px;
+  width: 998px;
+  margin: 34px 0px;
+}
+
+.cadastro{
+  width: 38.5%;
+  margin: 46px 56px;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro-forms{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+input[type='email']{
+  width: 322px;
+  height: 48px;
+  padding: 0px 12px;
+  margin-bottom: 22px;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+input[type='tel']{
+  width: 322px;
+  height: 48px;
+  padding: 0px 12px;
+  margin-bottom: 22px;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+input[type='text']{
+  width: 322px;
+  height: 48px;
+  padding: 0px 12px;
+  margin-bottom: 22px;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+input[id='cadastro-senha']{
+  width: 140px;
+  height: 48px;
+  padding: 0px 12px;
+  margin-bottom: 20px;
+  margin-right: 17px;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+input[id='cadastro-csenha']{
+  width: 140px;
+  height: 48px;
+  padding: 0px 12px;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+
+.cadastro-criarsenha{
+  display: flex;
+}
+
+.cadastro-buttoncadastro{
+  width: 350px;
+  height: 48px;
+
+  background: #3BB139;
+  color: #fff;
+
+  border-radius: 5px;
+  border: none;
+
+  cursor: pointer;
+}
+
+.cadastro-buttonvoltar{
+  width: 350px;
+  height: 48px;
+
+  background: transparent;
+  color: #3BB139;
+
+  border: 1px solid #3BB139;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  font-size: 24px;
+  font-weight: 500;
+}
+

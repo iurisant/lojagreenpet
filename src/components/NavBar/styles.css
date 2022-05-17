@@ -1,0 +1,80 @@
+/*Barra de pesquisa*/
+.text-input{
+  background-color:#f8f8f8;
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 25px;
+
+  height: 45px;
+  width: 38.5vw;
+
+  font-size: 18px;
+  padding: 0px 25px;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+textarea:focus, input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+/*NavBar categorias*/
+.button-categoria{
+    width: 110px;
+    height: 45px;
+    background: transparent;
+    color: #585B5E;
+    border: none;
+}
+.button-categoria:hover{
+    cursor: pointer;
+    background: #f1f1f1;
+}
+
+/*Botão do usuario logar*/
+.button-login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #585B5E;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/*Botão do ver carrinho*/
+.button-cart{
+  margin-left: 1vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #585B5E;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.contador{
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  background-color: #3BB139;
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+
+  position: relative;
+  top: -10px;
+  left: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

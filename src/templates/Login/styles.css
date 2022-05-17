@@ -1,0 +1,135 @@
+.login-declink{
+  text-decoration: none;
+}
+
+.login-dectext{
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.login-dectext2{
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.container-login{
+  background-color:#f8f8f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+.login-form{
+  background-image: url("../Images/ilustracao.png");
+  background-position: center;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 15px;
+
+  height: 545px;
+  width: 998px;
+  margin: 34px 0px;
+}
+
+.login{
+  width: 38.5%;
+  margin: 46px 56px;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.login-forms{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+input[type='email']{
+  width: 322px;
+  height: 48px;
+  padding: 0px 12px;
+  margin-bottom: 22px;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+input[type='password']{
+  width: 322px;
+  height: 48px;
+  padding: 0px 12px;
+  margin-bottom: 12px;
+
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+
+.login-buttonlogin{
+  width: 350px;
+  height: 48px;
+
+  background: #3BB139;
+  color: #fff;
+
+  border-radius: 5px;
+  border: none;
+
+  cursor: pointer;
+}
+
+.login-buttonvoltar{
+  width: 350px;
+  height: 48px;
+
+  background: transparent;
+  color: #3BB139;
+
+  border: 1px solid #3BB139;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.login-lembrarsenha{
+  width: 350px;
+  
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.login-styletext{
+  color: #585B5E;
+  font-size: 12px;
+}
+
+.login-nconta{
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+.login-textconta{
+  color: #585B5E;
+  font-size: 14px;
+  margin: 0px 5px 0px 5px ;
+}
+
+.login-linhaconta{
+  background:#585B5E;
+
+  width: 120px;
+  height: 0.5px;
+}

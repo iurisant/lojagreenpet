@@ -1,0 +1,14 @@
+.buttonMore{
+    width: 100%;
+    background: #3BB139;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 15px 30px ;
+    margin-bottom: 50px;
+}
+
+.buttonMore:disabled{
+    background: #c4c4c4;
+    cursor: not-allowed;
+}
