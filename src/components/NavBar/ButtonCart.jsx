@@ -1,6 +1,6 @@
 import './styles.css';
 
-import { Component } from "react";
+import React, { Component } from 'react';
 import Carrinho from './img/carrinho.svg';
 
 export class ButtonCart extends Component{

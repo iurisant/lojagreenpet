@@ -1,6 +1,6 @@
 import './styles.css';
 
-import { Component } from "react";
+import React, { Component } from 'react';
 
 export class ButtonMore extends Component{
   render(){

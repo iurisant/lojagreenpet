@@ -1,6 +1,7 @@
 import './styles.css';
 
 //my components
+import React from 'react';
 import { ButtonAddCart } from './ButtonAddCart';
 import { toast } from 'react-toastify';
 

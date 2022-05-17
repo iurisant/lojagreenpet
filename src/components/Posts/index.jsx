@@ -1,5 +1,6 @@
 import './styles.css';
 
+import React from 'react';
 import { PostCard } from '../PostCard/PostCard';
 
 export const Posts = ({posts}) => ( 

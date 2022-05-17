@@ -1,6 +1,6 @@
 import './styles.css';
 
-import { Component } from "react";
+import React, { Component } from 'react';
 import Usuario from './img/user.svg';
 
 export class ButtonUser extends Component{
