@@ -2,9 +2,28 @@ import React from 'react';
 import './styles.css';
 
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import LogoGreenPet from '../Images/logo_greenpet.svg';
+import InputMask from "react-input-mask";
+
+function PhoneInput(props) {
+  return (
+    <InputMask 
+      type='tel' 
+      id="telefone"
+      mask='(99) 99999-9999'
+      placeholder='Telefone / Celular'
+      value={props.value} 
+      onChange={props.onChange}>
+    </InputMask>
+  );
+}
 
 export const Cadastro = () => {
+  
+  const [phone, setPhone] = useState('');
+  const handleInput = ({ target: { value } }) => setPhone(value);
+
   return (
     <section>
       <div className='nav-main'>
@@ -22,12 +41,16 @@ export const Cadastro = () => {
             <div className='cadastro-forms'>
               <input type='email' id='email' placeholder='Digite seu email'/>
               <input type='text' id='name' placeholder='Nome completo'/>
-              <input type='tel' id='telefone' placeholder='Telefone / Celular'/>
+              <PhoneInput 
+                value={phone} 
+                onChange={handleInput}>
+              </PhoneInput>
 
-              <div className='cadastro-criarsenha'>
+              <div className='cadastro-criarsenha'>           
                 <input type='password' id='cadastro-senha' placeholder='Crie sua senha'/>
                 <input type='password' id='cadastro-csenha' placeholder='Confirme sua senha'/>
               </div>
+
               
               <Link to='/'>
                 <button className='cadastro-buttoncadastro cadastro-dectext'>Cadastrar</button>
