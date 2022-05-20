@@ -26,8 +26,6 @@ export const Home = () => {
 
   const noMorePosts = page + postsPerPage >= allPosts.length;
 
-  const productCart = 0;
-
   const filteredPosts = !!searchValue ? 
     allPosts.filter(post => {
       return post.title.toLowerCase().includes(
@@ -78,13 +76,11 @@ export const Home = () => {
             />
           </Link>
           <Link to='/cart' className='button-cart'>
-            <ButtonCart
-              text={productCart}
-            />
+            <ButtonCart/>
           </Link>
         </div>
       </div>  
-      
+        
       <div className='nav-bar'>
         <Categoria
           text="Cachorros"
@@ -114,7 +110,7 @@ export const Home = () => {
                 Lamentamos, nenhum produto encontrado com esse critério de pesquisa.
               </b>
               <p>
-                Tente novamente com outro termo para busca...
+                Tente novamente com outro termo para sua busca...
               </p>
             </div>
         )}
@@ -127,8 +123,7 @@ export const Home = () => {
             disabled={noMorePosts}
           />
         )}
-      </div>
-
+      </div>    
       <footer>
         <div className="footer-top">
           <div className="infos">

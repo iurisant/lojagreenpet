@@ -5,8 +5,20 @@ footer{
 
 .container{
   margin: 0;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
   background: #f8f8f8;
 }
+
+.container2{
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  background: #f8f8f8;
+}
+
 
 .button-container{
   margin: 0px 75px;
@@ -45,6 +57,8 @@ footer{
 
 .status-search{
   background: #f8f8f8;
+  margin-top: 30vh;
+  margin-bottom: 30vh;
   height: auto;
   width: auto;
   text-align:center;  
