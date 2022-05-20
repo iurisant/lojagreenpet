@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import './styles.css';
 
 import { Link } from 'react-router-dom';
@@ -6,6 +7,10 @@ import LogoGreenPet from '../Images/logo_greenpet.svg';
 
 export const Login = () => {
   return (
+    <>
+    <Helmet>
+      <title>Login</title>
+    </Helmet>
     <section>
       <div className='nav-main'>
         <Link to='/'>
@@ -44,7 +49,7 @@ export const Login = () => {
                 <div className='login-textconta'> Não tem conta? </div>
                 <div className='login-linhaconta'></div>
               </div>
-              <Link to='/Cadastro'>
+              <Link to='/cadastro'>
                 <button className='login-buttonlogin login-dectext'>Cadastrar-se</button>
               </Link>
               <Link to='/'>
@@ -56,5 +61,6 @@ export const Login = () => {
 
       </div>
     </section>
+    </>
   );
 }

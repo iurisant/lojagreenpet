@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
@@ -9,6 +10,10 @@ export const Cart = () => {
   const productCart = 0;
  
   return (
+    <>
+    <Helmet>
+      <title>Carrinho de compras</title>
+    </Helmet>
     <section className='container'>
       <div className='nav-main'>
         <Link to='/'>
@@ -36,5 +41,6 @@ export const Cart = () => {
       )}
 
     </section>
+    </>
   );
 }

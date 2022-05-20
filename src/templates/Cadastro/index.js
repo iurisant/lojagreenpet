@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import './styles.css';
 
 import { Link } from 'react-router-dom';
@@ -25,6 +26,10 @@ export const Cadastro = () => {
   const handleInput = ({ target: { value } }) => setPhone(value);
 
   return (
+    <>
+    <Helmet>
+      <title>Cadastro</title>
+    </Helmet>
     <section>
       <div className='nav-main'>
         <Link to='/'>
@@ -61,8 +66,8 @@ export const Cadastro = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
+    </>
   );
 }

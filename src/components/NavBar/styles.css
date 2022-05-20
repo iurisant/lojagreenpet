@@ -63,12 +63,13 @@ textarea:focus, input:focus {
 .contador{
   height: 15px;
   width: 15px;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #3BB139;
 
   color: #fff;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
 
   position: relative;
   top: -10px;

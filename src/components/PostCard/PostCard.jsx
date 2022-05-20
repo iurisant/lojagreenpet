@@ -4,8 +4,10 @@ import './styles.css';
 import React from 'react';
 import { ButtonAddCart } from './ButtonAddCart';
 import { toast } from 'react-toastify';
+import { useCart } from '../../hooks/useCart';
 
-export const PostCard = ({id, title, url, price, ammount}) => {
+
+export const PostCard = ({id, title, url, price, ammount, product}) => {
 
   toast.configure()
 
@@ -22,6 +24,11 @@ export const PostCard = ({id, title, url, price, ammount}) => {
     text = "Adicionar ao carrinho"
   }
 
+  const cart = useCart()
+  const add = (product) => () =>{
+    cart.addToCart(product)
+  }
+
   return(
     <div className='post' id={id}>
       <img src={url} alt={title} className='img-post'/>
@@ -31,7 +38,7 @@ export const PostCard = ({id, title, url, price, ammount}) => {
         <p>ou 3x R${((price/3).toFixed(2)).replaceAll('.',',')} s/ juros</p>
         <p>Produtos disponíveis: {ammount}</p>
         <ButtonAddCart
-            onClick={Notify}
+            onClick={add(product)}
             disabled={noMoreStock}
             text={text}
         />
