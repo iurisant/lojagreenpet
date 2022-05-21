@@ -5,15 +5,25 @@ import './styles.css';
 
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
+import { useCart} from '../../hooks/useCart';
 import LogoGreenPet from '../Images/logo_greenpet.svg';
 
 export const Cart = () => {
+  const cart = useCart()
+  const remove = (id) => () =>{
+    cart.removeFromCart(id)
+  }
+  const changeQuantity = (id) => (evt) =>{
+    cart.changeQuantity(id, Number(evt.target.value))
+  }
+
   return (
     <>
     <Helmet>
       <title>Carrinho de compras</title>
     </Helmet>
-    <section className='container2'>
+    
+    <section className='container'>
       <div className='nav-main'>
         <Link to='/'>
           <img src={LogoGreenPet} alt="greenpet" className='logo'/>
@@ -35,25 +45,40 @@ export const Cart = () => {
           <div className='indices-mycart flex-mycart'>
             <span className='th-produto'>Produto</span>
             <span className='th-quantidade'>Quantidade</span>
-            <span className='th-valor'>Valor</span>
+            <span className='th-valor'>Valor Uni.</span>
           </div>
-          <div className='flex-mycart cart-product'>
-            <div className='img-productcart'/>
-            <div className='tittle-productcart'>Ração Royal Canin 15kg Maxi Junior Cães Filhotes de Raças Grandes</div>
-            <div className='add-moreproducts'>
-              <button className='button-moreproducts'>
-                <div>-</div>
-              </button>
-              <span> 0 </span>
-              <button className='button-moreproducts'>
-                <div>+</div>
-              </button>
+
+          {Object.keys(cart.cart).map(key =>{
+          return( 
+            <div className='flex-mycart cart-product' key={key}>
+              <div className='flex-myitencart'>
+                <img
+                  className='img-productcart'
+                  src={cart.cart[key].product.url}
+                  alt={cart.cart[key].product.title}
+                />
+                <div className='tittle-productcart'>
+                  {cart.cart[key].product.title}
+                </div>
+              </div>
+              <div className='flex-remove'>
+                  <input 
+                    className='add-moreproducts'
+                    disabled=''
+                    type='number'
+                    defaultValue={cart.cart[key].quantity}
+                    onBlur={changeQuantity(key)}
+                  />
+                <button className='remove-products' onClick={remove(key)}>
+                  <p>remove</p>
+                </button>
+              </div>
+              <span className='product-price'>R$ {(cart.cart[key].product.price).replaceAll('.',',')}</span>
             </div>
-            <span>R$200,00</span>
-          </div>
+          )})}
+
         </div>
       </div> 
-
     </section>
     </>
   );

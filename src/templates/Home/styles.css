@@ -7,18 +7,9 @@ footer{
   margin: 0;
   display: flex;
   flex-flow: column;
-  height: 100%;
+  min-height: 100vh;
   background: #f8f8f8;
 }
-
-.container2{
-  margin: 0;
-  display: flex;
-  flex-flow: column;
-  height: 100vh;
-  background: #f8f8f8;
-}
-
 
 .button-container{
   margin: 0px 75px;

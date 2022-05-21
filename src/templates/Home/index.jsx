@@ -15,7 +15,6 @@ import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../Images/logo_greenpet.svg';
 import SloganGreenPet from '../Images/slogan_greenpet.svg';
 import Instagram from '../Images/instagram.svg';
-import { useCart } from '../../hooks/useCart';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);

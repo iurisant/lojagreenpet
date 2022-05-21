@@ -38,18 +38,24 @@
 .flex-mycart{
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 
   border-bottom: 1px solid #C2C2C2;
 }
+.flex-myitencart{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .th-produto{
-  padding-left: 30px
+  padding-left: 30px;
 }
 .th-quantidade{
   padding-left: 495px;
-  padding-right: 96px 
+  padding-right: 73px; 
 }
 .th-valor{
-  padding-right: 30px
+  padding-right: 30px;
 }
 
 /* Produtos carrinho*/
@@ -57,7 +63,6 @@
 .img-productcart{
   height: 98px;
   width: 98px;
-  background-color: #3BA339;
 }
 
 .cart-product{
@@ -65,27 +70,32 @@
   font-weight: 400;
 }
 
-.add-moreproducts{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .add-moreproducts{
+    width: 118px;
+    height: 38px;
 
-  width: 118px;
-  height: 38px;
+    border: 1px solid #C2C2C2;
+    border-radius: 5px;
 
-  border: 1px solid #C2C2C2;
-  border-radius: 5px;
-}
-.button-moreproducts{
-  height: 38px;
-  width: 38px;
-  background: #C2C2C2;
+    text-align: center;
+  }
+.remove-products{
   border: none;
-  font-size: 16px;
-  font-weight: 600;
+  background: transparent;
+  width: 70px;
+  height: 20px;
+  cursor: pointer;
 }
 .tittle-productcart{
   width: 386px;
   margin: 33px;
   color: #000;
+}
+.flex-remove{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-price{
+  margin-left: 46px;
 }
