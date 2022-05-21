@@ -10,23 +10,57 @@ export const CartProvaider = ({children}) => {
       setCart(JSON.parse(cartLocal))
     }
   }, [])
+
   const addToCart = (product) => {
     setCart((old) => {
-      let quantity = 0
+      let quantity = 0;
+      
       if(old[product.id]){
         quantity = old[product.id].quantity
       }
+
+      if(quantity < product.ammount){
+        quantity = quantity + 1
+      }
+
       const newCart = {
         ...old,
         [product.id]: {
-          quantity: quantity+1,
+          quantity: quantity,
           product,
         }, 
       }
       window.localStorage.setItem('cart', JSON.stringify(newCart))
       return newCart
-    })
+      }
+    )
   }
+
+  const decrementFromCart = (product) => {
+    setCart((old) => {
+      let quantity = 0;
+      
+      if(old[product.id]){
+        quantity = old[product.id].quantity
+      }
+
+      if(quantity > 1){
+        quantity = quantity - 1
+      }
+
+      const newCart = {
+        ...old,
+        [product.id]: {
+          quantity: quantity,
+          product,
+        }, 
+      }
+      window.localStorage.setItem('cart', JSON.stringify(newCart))
+      return newCart
+      }
+    )
+  }
+
   const removeFromCart = (productId) => {
     setCart((old) => {
       const newCart = {}
@@ -39,6 +73,7 @@ export const CartProvaider = ({children}) => {
       return newCart
     })
   }
+
   const changeQuantity = (productId, newQuantity) => {
     setCart((old) => {
       const newCart = {}
@@ -54,7 +89,7 @@ export const CartProvaider = ({children}) => {
     })
   } 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, changeQuantity }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, changeQuantity, decrementFromCart }}>
       {children}
     </CartContext.Provider>
   )

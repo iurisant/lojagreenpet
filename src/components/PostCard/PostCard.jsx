@@ -8,13 +8,6 @@ import { useCart } from '../../hooks/useCart';
 
 
 export const PostCard = ({id, title, url, price, ammount, product}) => {
-
-  toast.configure()
-
-  const Notify = () =>{
-    toast.success('Teste de notificação')
-  }
-
   const noMoreStock = ammount < 1;
   let text;
 

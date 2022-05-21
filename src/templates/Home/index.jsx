@@ -100,6 +100,7 @@ export const Home = () => {
           text="Roedores"
         />
       </div>
+      
         {filteredPosts.length > 0 && (
           <Posts posts={ filteredPosts }/>
         )}
