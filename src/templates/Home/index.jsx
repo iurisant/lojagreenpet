@@ -45,6 +45,7 @@ export const Home = () => {
     handleloadPosts(0, postsPerPage);
   }, [handleloadPosts, postsPerPage]);
 
+  /* Carregar mais produtos */
   const loadMorePosts = () => {
     const nextPage = page + postsPerPage;
     const nextPosts = allPosts.slice(nextPage, nextPage + postsPerPage);
@@ -116,13 +117,11 @@ export const Home = () => {
         )}
 
       <div className='button-container'>
-        {!searchValue && (
-          <ButtonMore 
-            text="Mostrar mais"
-            onClick={loadMorePosts}
-            disabled={noMorePosts}
-          />
-        )}
+        <ButtonMore 
+          text="Mostrar mais"
+          onClick={loadMorePosts}
+          disabled={noMorePosts}
+        />
       </div>    
       <footer>
         <div className="footer-top">
