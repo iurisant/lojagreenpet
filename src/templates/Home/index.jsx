@@ -3,6 +3,7 @@ import './styles.css';
 import React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 //my components
 import { Posts } from '../../components/Posts';
@@ -61,6 +62,10 @@ export const Home = () => {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Loja GreenPet</title>
+    </Helmet>
     <section className='container'>
       <div className='nav-main'>
         <Link to='/'>
@@ -155,5 +160,6 @@ export const Home = () => {
         </div>
       </footer>
     </section>
+    </>
   );
 }
