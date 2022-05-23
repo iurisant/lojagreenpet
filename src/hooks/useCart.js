@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 export const CartContext = createContext()
 
@@ -21,6 +22,9 @@ export const CartProvaider = ({children}) => {
 
       if(quantity < product.ammount){
         quantity = quantity + 1
+        toast.success("Produto adicionado ao carrinho!")
+      }else{
+        toast.error("Limite máximo de produtos!")
       }
 
       const newCart = {
@@ -46,6 +50,7 @@ export const CartProvaider = ({children}) => {
 
       if(quantity > 1){
         quantity = quantity - 1
+        toast.success("Produto retidado do carrinho!")
       }
 
       const newCart = {
@@ -70,6 +75,7 @@ export const CartProvaider = ({children}) => {
         }
       })
       window.localStorage.setItem('cart', JSON.stringify(newCart))
+      toast.success("O produto foi removido!")
       return newCart
     })
   }
@@ -96,6 +102,6 @@ export const CartProvaider = ({children}) => {
 }
 
 export const useCart = () =>{
-  const cart = useContext(CartContext);
+  const cart = useContext(CartContext)
   return cart
 }

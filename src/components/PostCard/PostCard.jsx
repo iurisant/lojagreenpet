@@ -3,11 +3,10 @@ import './styles.css';
 //my components
 import React from 'react';
 import { ButtonAddCart } from './ButtonAddCart';
-import { toast } from 'react-toastify';
 import { useCart } from '../../hooks/useCart';
 
 
-export const PostCard = ({id, title, url, price, ammount, product}) => {
+export const PostCard = ({id, title, url, price, ammount, category, product}) => {
   const noMoreStock = ammount < 1;
   let text;
 

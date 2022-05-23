@@ -6,8 +6,8 @@ import './styles.css';
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import { useCart } from '../../hooks/useCart';
-import LogoGreenPet from '../Images/logo_greenpet.svg';
-import BadCart from '../Images/badcart.svg';
+import LogoGreenPet from '../../assets/logo_greenpet.svg';
+import BadCart from '../../assets/badcart.svg';
 
 export const Cart = () => {
   const cart = useCart()

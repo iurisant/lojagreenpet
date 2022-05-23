@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import './styles.css';
 
 import { Link } from 'react-router-dom';
-import LogoGreenPet from '../Images/logo_greenpet.svg';
+import LogoGreenPet from '../../assets/logo_greenpet.svg';
 
 export const Login = () => {
   return (

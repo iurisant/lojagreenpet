@@ -15,6 +15,7 @@ export const Posts = ({posts}) => {
             url = {post.url}
             price = {post.price}
             ammount= {post.ammount}
+            category={post.category}
             product = {post}
           />
         ))}    

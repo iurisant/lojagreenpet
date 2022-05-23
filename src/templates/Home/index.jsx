@@ -13,9 +13,9 @@ import { TextInput } from '../../components/NavBar/TextInput';
 import { Categoria } from '../../components/NavBar/Categoria';
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
-import LogoGreenPet from '../Images/logo_greenpet.svg';
-import SloganGreenPet from '../Images/slogan_greenpet.svg';
-import Instagram from '../Images/instagram.svg';
+import LogoGreenPet from '../../assets/logo_greenpet.svg';
+import SloganGreenPet from '../../assets/slogan_greenpet.svg';
+import Instagram from '../../assets/instagram.svg';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -28,9 +28,9 @@ export const Home = () => {
 
   const filteredPosts = !!searchValue ? 
     allPosts.filter(post => {
-      return post.title.toLowerCase().includes(
+      return post.category.toLowerCase().includes(
         searchValue.toLowerCase()
-        );
+      );
     }) 
     : 
     posts;
@@ -106,7 +106,7 @@ export const Home = () => {
           text="Roedores"
         />
       </div>
-      
+     
         {filteredPosts.length > 0 && (
           <Posts posts={ filteredPosts }/>
         )}
