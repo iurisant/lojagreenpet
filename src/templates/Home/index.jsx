@@ -1,7 +1,7 @@
 import './styles.css';
 
 import React from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 
@@ -23,18 +23,30 @@ export const Home = () => {
   const [page, setPage] = useState(0);
   const [postsPerPage] = useState(5);
   const [searchValue, setSearchValue] = useState('');
+  const [categoryValue, setCategoryValue] = useState('');
 
   const noMorePosts = page + postsPerPage >= allPosts.length;
-
-  const filteredPosts = !!searchValue ? 
+  
+  /* Renderizar posts filtrados */
+  const filteredPosts = searchValue ? 
     allPosts.filter(post => {
-      return post.category.toLowerCase().includes(
-        searchValue.toLowerCase()
+      return post.title.toLowerCase().includes(
+        searchValue.toLowerCase(
+          searchValue
+        )
       );
-    }) 
-    : 
-    posts;
+    })
+  : posts;
 
+  const filteredCategoryPosts = categoryValue ? 
+    allPosts.filter(post => {
+      return post.category.includes(
+        categoryValue
+      );
+    })
+  : posts;
+
+  /* Renderiza os posts */
   const handleloadPosts = useCallback(async (page, postsPerPage) => {
     const postsAndPhotos = await loadPosts();
 
@@ -59,6 +71,11 @@ export const Home = () => {
   const handleChange = (e) =>{
     const { value } = e.target;
     setSearchValue(value);
+  }
+  
+  const handleCategoryChange = (e) =>{
+    const { value } = e.target;
+    setCategoryValue(value);
   }
 
   return (
@@ -89,36 +106,52 @@ export const Home = () => {
       <div className='nav-bar'>
         <Categoria
           text="Cachorros"
+          categoryValue="Cachorros"
+          handleChange={handleCategoryChange}
         />
         <Categoria
           text="Gatos"
+          categoryValue="Gato"
+          handleChange={handleCategoryChange}
         />
         <Categoria
           text="Pássaros"
+          categoryValue="Pássaros"
+          handleChange={handleCategoryChange}
         />
         <Categoria
           text="Peixes"
+          categoryValue="Peixes"
+          handleChange={handleCategoryChange}
         />
         <Categoria
           text="Répteis"
+          categoryValue="Répteis"
+          handleChange={handleCategoryChange}
         />
         <Categoria
           text="Roedores"
+          categoryValue="Roedores"
+          handleChange={handleCategoryChange}
         />
-      </div>
-     
+      </div>   
+        {!filteredCategoryPosts.length && (
+          <Posts posts={ filteredCategoryPosts }/>
+        )}
+
         {filteredPosts.length > 0 && (
           <Posts posts={ filteredPosts }/>
         )}
-        {filteredPosts.length === 0 && (
-            <div className='status-search'>
-              <b>
-                Lamentamos, nenhum produto encontrado com esse critério de pesquisa.
-              </b>
-              <p>
-                Tente novamente com outro termo para sua busca...
-              </p>
-            </div>
+          
+        {filteredPosts.length === 0 && ( 
+          <div className='status-search'>
+            <b>
+              Lamentamos, nenhum produto encontrado com esse critério de pesquisa.
+            </b>
+            <p>
+              Tente novamente com outro termo para sua busca...
+            </p>
+          </div>
         )}
 
       <div className='button-container'>

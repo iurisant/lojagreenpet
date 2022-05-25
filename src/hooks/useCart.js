@@ -24,7 +24,7 @@ export const CartProvaider = ({children}) => {
         quantity = quantity + 1
         toast.success("Produto adicionado ao carrinho!")
       }else{
-        toast.error("Limite máximo de produtos!")
+        toast.error("Número máximo disponível!")
       }
 
       const newCart = {

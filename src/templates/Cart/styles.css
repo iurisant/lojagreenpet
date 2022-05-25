@@ -172,7 +172,7 @@ input[type=number]{
 }
 .total-cart{
   width: 400px;
-  height: 420px;
+  height: 375px;
   margin-top: 115px;
 
   background-color: #fff;
@@ -180,15 +180,60 @@ input[type=number]{
   border-radius: 5px;
 }
 .resumo-produto{
-  height: 60px;
-  padding: 0px 24px;
+  padding: 4px 24px;
+  font-size: 16px;
 
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
 }
-.resumo-produto span{
+.title-resumo{
+  padding: 0px 24px;
+  height: 60px;
+
   color: #3BA339;
   font-size: 16px;
   font-weight: 600;
+
+  display: flex;
+  align-items: center;
+}
+.finalizar-carrinho{
+  width: 352px;
+  height: 48px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  background-color: #3BA339;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+.voltar-carrinho{
+  width: 352px;
+  height: 48px;
+  cursor: pointer;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  background-color: #fff;
+  color: #3BA339;
+  border: 0.5px solid #3BA339;
+  border-radius: 5px;
+}
+.linha-resumo{
+  width: 352px;
+  height: 0.5px;
+  background-color: #C2C2C2;
+  margin: 25px 0px;
+}
+.subtotal{
+  font-size: 20px;
+  font-weight: 500;
 }

@@ -27,6 +27,14 @@ export const Cart = () => {
   const decrement = (product) => () =>{
     cart.decrementFromCart(product)
   }
+
+  const itensCount = Object.keys(cart.cart).reduce((prev, curr) => {
+    return prev + cart.cart[curr].quantity
+  }, 0)
+
+  const subTotal = Object.keys(cart.cart).reduce((prev, curr) => {
+    return prev + (cart.cart[curr].product.price * cart.cart[curr].quantity)
+  }, 0)
   
   return (
     <>
@@ -99,6 +107,44 @@ export const Cart = () => {
             </div>
           </div> 
         )}
+
+        {JSON.stringify(cart.cart) !== "{}" && (
+          <div className='total-cart'>
+            <div className='title-resumo'>
+              <strong>Resumo dos produtos</strong>
+            </div>
+            <div className='resumo-produto'>
+              <span>Produtos ({itensCount} itens)</span>
+              <span>R$ {((subTotal).toFixed(2)).replaceAll('.',',')}</span>  
+            </div>  
+            <div className='resumo-produto'>
+              <span>Frete</span>
+              <span>R$</span>  
+            </div>
+            <div className='resumo-produto'>
+              <div className='linha-resumo'></div> 
+            </div>
+            <div className='resumo-produto'>
+              <span className='subtotal'>Subtotal:</span>
+              <span className='subtotal'>R$ {((subTotal).toFixed(2)).replaceAll('.',',')}</span>  
+            </div>
+            <div className='resumo-produto '>
+              <button 
+                className="finalizar-carrinho"
+              >
+                Finalizar compra
+              </button>
+            </div>
+            <div className='resumo-produto'>
+              <button 
+                className="voltar-carrinho"
+              > 
+                Voltar
+              </button>
+            </div>
+          </div>
+        )}
+
         {JSON.stringify(cart.cart) === "{}" &&(
           <div className='flex-badcart'>
             <strong>Seu carrinho está vazio :(</strong>
@@ -109,13 +155,6 @@ export const Cart = () => {
                 Adicionar itens ao carrinho
               </div>
             </Link>
-          </div>
-        )}
-        {JSON.stringify(cart.cart) !== "{}" &&(
-          <div className='total-cart'>
-            <div className='resumo-produto'>
-              <span>Resumo dos produtos</span>
-            </div>
           </div>
         )}
       </div>
