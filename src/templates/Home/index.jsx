@@ -28,6 +28,14 @@ export const Home = () => {
   const noMorePosts = page + postsPerPage >= allPosts.length;
   
   /* Renderizar posts filtrados */
+  const filteredCategoryPosts = categoryValue ? 
+    allPosts.filter(post => {
+      return post.category.includes(
+          categoryValue
+      );
+    })
+  : posts
+  
   const filteredPosts = searchValue ? 
     allPosts.filter(post => {
       return post.title.toLowerCase().includes(
@@ -36,15 +44,7 @@ export const Home = () => {
         )
       );
     })
-  : posts;
-
-  const filteredCategoryPosts = categoryValue ? 
-    allPosts.filter(post => {
-      return post.category.includes(
-        categoryValue
-      );
-    })
-  : posts;
+  : []
 
   /* Renderiza os posts */
   const handleloadPosts = useCallback(async (page, postsPerPage) => {
@@ -72,10 +72,15 @@ export const Home = () => {
     const { value } = e.target;
     setSearchValue(value);
   }
-  
+
   const handleCategoryChange = (e) =>{
     const { value } = e.target;
-    setCategoryValue(value);
+
+    if(categoryValue === value){
+      setCategoryValue('');   
+    }else{
+      setCategoryValue(value);
+    }
   }
 
   return (
@@ -111,7 +116,7 @@ export const Home = () => {
         />
         <Categoria
           text="Gatos"
-          categoryValue="Gato"
+          categoryValue="Gatos"
           handleChange={handleCategoryChange}
         />
         <Categoria
@@ -135,15 +140,16 @@ export const Home = () => {
           handleChange={handleCategoryChange}
         />
       </div>   
-        {!filteredCategoryPosts.length && (
-          <Posts posts={ filteredCategoryPosts }/>
-        )}
-
+        
         {filteredPosts.length > 0 && (
           <Posts posts={ filteredPosts }/>
         )}
+
+        {(filteredCategoryPosts.length > 0 && searchValue.length === 0)&& (
+          <Posts posts={ filteredCategoryPosts }/>
+        )}
           
-        {filteredPosts.length === 0 && ( 
+        {(filteredPosts.length === 0 && searchValue.length > 0) && ( 
           <div className='status-search'>
             <b>
               Lamentamos, nenhum produto encontrado com esse critério de pesquisa.
@@ -155,11 +161,13 @@ export const Home = () => {
         )}
 
       <div className='button-container'>
-        <ButtonMore 
-          text="Mostrar mais"
-          onClick={loadMorePosts}
-          disabled={noMorePosts}
-        />
+        {(searchValue.length === 0 && categoryValue === '') &&(
+          <ButtonMore 
+            text="Mostrar mais"
+            onClick={loadMorePosts}
+            disabled={noMorePosts}
+          />
+        )}
       </div>    
       <footer>
         <div className="footer-top">

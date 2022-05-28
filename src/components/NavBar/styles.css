@@ -31,6 +31,7 @@ textarea:focus, input:focus {
   color: #585B5E;
   border: none;
 }
+
 .button-categoria:hover{
   cursor: pointer;
   background: #f1f1f1;
