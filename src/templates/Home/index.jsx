@@ -195,7 +195,7 @@ export const Home = () => {
           <div className="footer-social">
             <p>REDES SOCIAIS:</p>
             <a href="https://www.instagram.com/lojagreenpet_/">
-              <img src={Instagram} alt="greenpet"/>
+              <img src={Instagram} alt="instagram-greenpet"/>
             </a>
           </div>
         </div>
