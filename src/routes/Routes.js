@@ -6,6 +6,7 @@ import { Home } from '../templates/Home/index';
 import { Cart } from '../templates/Cart/index';
 import { Login } from '../templates/Login/index';
 import { Cadastro } from '../templates/Cadastro/index';
+import { gProdutos } from '../templates/Fornecedor';
 
 export default function mainRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function mainRoutes() {
       <Route exact path="/cart" component={Cart}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/cadastro" component={Cadastro}/>
+      <Route exact path="/gerenciar-produtos" component={gProdutos}/>
     </Switch>
   );
 }

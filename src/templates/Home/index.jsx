@@ -1,7 +1,7 @@
 import './styles.css';
 
 import React from 'react';
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback} from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 

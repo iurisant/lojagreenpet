@@ -104,7 +104,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
 }
-input[type=number]{
+input[id="total"]{
   width: 35px;
   height: 35px;
   border: none;

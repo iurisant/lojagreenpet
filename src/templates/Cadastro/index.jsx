@@ -1,29 +1,32 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
+import Axios from 'axios'
 import './styles.css';
 
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
-import InputMask from "react-input-mask";
-
-function PhoneInput(props) {
-  return (
-    <InputMask 
-      type='tel' 
-      id="telefone"
-      mask='(99) 99999-9999'
-      placeholder='Telefone / Celular'
-      value={props.value} 
-      onChange={props.onChange}>
-    </InputMask>
-  );
-}
+import CurrencyFormat from 'react-currency-format';
 
 export const Cadastro = () => {
-  
-  const [phone, setPhone] = useState('');
-  const handleInput = ({ target: { value } }) => setPhone(value);
+  const [values, setValues] = useState('');
+
+  const handleChangeValues = (value) =>{
+    setValues(prevValues=>({
+      ...prevValues,
+      [value.target.name]: value.target.value
+    }))
+  }
+
+  const handleClickButton = () => {
+    if(values !== ''){
+      Axios.post("http://localhost:3001/register", {
+        email: values.email,
+        nome: values.nome,
+        telefone: values.telefone
+      }).then((response)=> console.log(response))
+    }
+  }
 
   return (
     <>
@@ -44,22 +47,46 @@ export const Cadastro = () => {
               Cadastre-se
             </span>
             <div className='cadastro-forms'>
-              <input type='email' id='email' placeholder='Digite seu email'/>
-              <input type='text' id='name' placeholder='Nome completo'/>
-              <PhoneInput 
-                value={phone} 
-                onChange={handleInput}>
-              </PhoneInput>
+              <input 
+                type='email'
+                name='email'  
+                id='email' 
+                placeholder='Digite seu email' 
+                onChange={handleChangeValues}
+              />
+              <input 
+                type='text'
+                name='nome'  
+                id='name' 
+                placeholder='Nome completo' 
+                onChange={handleChangeValues}
+              />
+              
+              <CurrencyFormat  format="(##) #########" id='telefone' placeholder="Celular/Telefone" onChange={handleChangeValues} mask = "_"/>
 
               <div className='cadastro-criarsenha'>           
-                <input type='password' id='cadastro-senha' placeholder='Crie sua senha'/>
-                <input type='password' id='cadastro-csenha' placeholder='Confirme sua senha'/>
+                <input 
+                  type='password' 
+                  name='senha' 
+                  id='cadastro-senha' 
+                  placeholder='Crie sua senha' 
+                  onChange={handleChangeValues}
+                />
+
+                <input 
+                  type='password' 
+                  id='cadastro-csenha' 
+                  placeholder='Confirme sua senha'
+                />
               </div>
 
-              
-              <Link to='/'>
-                <button className='cadastro-buttoncadastro cadastro-dectext'>Cadastrar</button>
-              </Link>
+              <button 
+                className='cadastro-buttoncadastro cadastro-dectext'
+                onClick={handleClickButton}
+              >
+                Cadastrar
+              </button>
+
               <Link to='/Login'>
                 <button className='cadastro-buttonvoltar'>Voltar</button>
               </Link>

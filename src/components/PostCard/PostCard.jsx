@@ -5,7 +5,6 @@ import React from 'react';
 import { ButtonAddCart } from './ButtonAddCart';
 import { useCart } from '../../hooks/useCart';
 
-
 export const PostCard = ({id, title, url, price, ammount, category, product}) => {
   const noMoreStock = ammount < 1;
   let text;

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
+//my components
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import { useCart } from '../../hooks/useCart';
