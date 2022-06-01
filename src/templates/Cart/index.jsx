@@ -9,6 +9,7 @@ import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import { useCart } from '../../hooks/useCart';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import BadCart from '../../assets/badcart.svg';
+import { MenuUser } from '../../components/MenuUser';
 
 export const Cart = () => {
   const cart = useCart()
@@ -59,6 +60,8 @@ export const Cart = () => {
           </Link>
         </div>
       </div>
+
+      <MenuUser/>
 
       <div className='flex-allcart'>
         {JSON.stringify(cart.cart) !== "{}" && (

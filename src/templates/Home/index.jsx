@@ -16,6 +16,7 @@ import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import SloganGreenPet from '../../assets/slogan_greenpet.svg';
 import Instagram from '../../assets/instagram.svg';
+import { MenuUser } from '../../components/MenuUser';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -106,7 +107,9 @@ export const Home = () => {
             <ButtonCart/>
           </Link>
         </div>
-      </div>  
+      </div>
+
+      <MenuUser/>
         
       <div className='nav-bar'>
         <Categoria

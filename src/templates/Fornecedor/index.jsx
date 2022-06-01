@@ -7,6 +7,8 @@ import './styles.css';
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import CurrencyFormat from 'react-currency-format';
+import { MenuUser } from '../../components/MenuUser';
+import { ButtonCart } from '../../components/NavBar/ButtonCart';
 
 export const gProdutos = () => {
 
@@ -27,8 +29,13 @@ export const gProdutos = () => {
               text="Crie sua conta"
             />
           </Link>
+          <Link to='/cart' className='button-cart'>
+            <ButtonCart/>
+          </Link>
         </div>
       </div>
+
+      <MenuUser/>
 
       <div className='flex-allcart'>
         <div className='mycart'>
