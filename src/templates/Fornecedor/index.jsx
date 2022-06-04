@@ -6,6 +6,7 @@ import './styles.css';
 //my components
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
+import Camera from '../../assets/camera.svg';
 import CurrencyFormat from 'react-currency-format';
 import { MenuUser } from '../../components/MenuUser';
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
@@ -68,6 +69,7 @@ export const gProdutos = () => {
               <span className='product-price'>R$</span>
             </div>
           </div>
+          <button className='add-produto'>+ Adicionar</button>
         </div> 
           <div className='total-gprodutos'>
             <div className='title-gprodutos'>
@@ -103,17 +105,23 @@ export const gProdutos = () => {
               <div className='qtdimg'>
                 <div>
                   <p>Quantidade*</p>
-                  <input 
-                    type='number'
-                    name='quantidade'  
+                  <CurrencyFormat
                     id='quantidade' 
+                    name='quantidade' 
+                    decimalSeparator=""
+                    allowNegative={false}
                   />
                 </div>
                 <div>
                   <p>Imagem do produto*</p>
+                  <button className='submit-img-produto' onClick={() => {}}>
+                    <img alt='Camera' src={Camera} className='svg-camera'/>
+                    <span>Inserir imagem ao produto</span>
+                  </button>
                   <input 
                     type='file'
-                    name='imagem'  
+                    name='imagem'
+                    accept="image/*"  
                     id='imagem'
                   />
                 </div>
@@ -122,9 +130,9 @@ export const gProdutos = () => {
 
             <div className='resumo-produto '>
               <button 
-                className="finalizar-carrinho"
+                className="submit-produto"
               >
-                Finalizar compra
+                Adicionar
               </button>
             </div>
           </div>

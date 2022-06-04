@@ -169,6 +169,7 @@ input[id="total"]{
 .flex-allcart{
   display: flex;
   justify-content: center;
+  margin-bottom: 25px;
 }
 .total-cart{
   width: 400px;
