@@ -62,7 +62,7 @@ export const Cadastro = () => {
                 onChange={handleChangeValues}
               />
               
-              <CurrencyFormat  format="(##) #########" id='telefone' placeholder="Celular/Telefone" onChange={handleChangeValues} mask = "_"/>
+              <CurrencyFormat  format="(##) #########" id='telefone' name='telefone' placeholder="Celular/Telefone" onChange={handleChangeValues} mask = "_"/>
 
               <div className='cadastro-criarsenha'>           
                 <input 
