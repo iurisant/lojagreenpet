@@ -77,28 +77,9 @@ input[id='imagem']{
   display: flex;
   justify-content: space-between
 }
-.submit-img-produto{
-  width: 205px;
-  height: 48px;
-  padding: 0px 12px;
-  margin-bottom: 12px;
-
-  background-color: #fff;
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-
-  font-size: 12px;
-  color: #C2C2C2;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-}
 .svg-camera{
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
   margin-right: 5px;
 }
 .submit-produto{
@@ -143,4 +124,49 @@ input[id='imagem']{
   align-items: center;
 
   cursor: pointer;
+}
+
+label[for='imagem']{
+  width: 175px;
+  height: 48px;
+  padding: 0px 12px;
+  margin-bottom: 12px;
+
+  background-color: #fff;
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 13px;
+  color: #C2C2C2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* TORNE-SE UM FORNECEDOR */
+
+.seja-fornecedor{
+  max-width: 1275px;
+  padding: 56px 40px;
+}
+.seja-fornecedor strong{
+  font-size: 24px;
+  margin-left: 30px;
+}
+
+.info-fornecedor{
+  background-color: #fff;
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+
+  font-size: 24px;
+
+  margin-top: 30px;
+  padding: 35px;
+}
+.info-fornecedor span{
+  font-size: 36px;
 }

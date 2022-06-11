@@ -9,7 +9,6 @@ import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import { useCart } from '../../hooks/useCart';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import BadCart from '../../assets/badcart.svg';
-import { MenuUser } from '../../components/MenuUser';
 
 export const Cart = () => {
   const cart = useCart()
@@ -60,8 +59,6 @@ export const Cart = () => {
           </Link>
         </div>
       </div>
-
-      <MenuUser/>
 
       <div className='flex-allcart'>
         {JSON.stringify(cart.cart) !== "{}" && (
@@ -133,18 +130,14 @@ export const Cart = () => {
               <span className='subtotal'>R$ {((subTotal).toFixed(2)).replaceAll('.',',')}</span>  
             </div>
             <div className='resumo-produto '>
-              <button 
-                className="finalizar-carrinho"
-              >
+              <Link to='/pagamento' className="finalizar-carrinho">
                 Finalizar compra
-              </button>
+              </Link>
             </div>
             <div className='resumo-produto'>
-              <button 
-                className="voltar-carrinho"
-              > 
+              <Link to='/' className="voltar-carrinho"> 
                 Voltar
-              </button>
+              </Link>
             </div>
           </div>
         )}

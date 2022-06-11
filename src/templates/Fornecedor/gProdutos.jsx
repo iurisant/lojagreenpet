@@ -8,7 +8,6 @@ import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import Camera from '../../assets/camera.svg';
 import CurrencyFormat from 'react-currency-format';
-import { MenuUser } from '../../components/MenuUser';
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
 
 export const gProdutos = () => {
@@ -36,13 +35,11 @@ export const gProdutos = () => {
         </div>
       </div>
 
-      <MenuUser/>
-
       <div className='flex-allcart'>
         <div className='mycart'>
           <span className='tittle-mycart'>Gerenciar produtos</span>
           <div className='produtos-mycart'>
-            <div className='indices-mycart flex-mycart'>
+             <div className='indices-mycart flex-mycart'>
               <span className='th-produto'>Produto</span>
             </div>
             <div className='flex-mycart cart-product'>
@@ -53,21 +50,8 @@ export const gProdutos = () => {
                 <div className='tittle-productcart'>
                 </div>
               </div>
-              <div className='flex-remove'>
-                <div className='add-moreproducts'>
-                  <button className='add-remove'>-</button>
-                  <input 
-                    id="total" 
-                    type="number" 
-                  />
-                  <button className='add-remove'>+</button>
-                </div>  
-                <button className='remove-products'>
-                  <p>remover</p>
-                </button>
-              </div>
               <span className='product-price'>R$</span>
-            </div>
+            </div> 
           </div>
           <button className='add-produto'>+ Adicionar</button>
         </div> 
@@ -114,10 +98,14 @@ export const gProdutos = () => {
                 </div>
                 <div>
                   <p>Imagem do produto*</p>
-                  <button className='submit-img-produto' onClick={() => {}}>
-                    <img alt='Camera' src={Camera} className='svg-camera'/>
-                    <span>Inserir imagem ao produto</span>
-                  </button>
+                  <label for="imagem">
+                    <img 
+                      alt='Camera' 
+                      src={Camera} 
+                      className='svg-camera'
+                    />
+                    Inserir imagem ao produto
+                  </label>
                   <input 
                     type='file'
                     name='imagem'

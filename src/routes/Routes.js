@@ -6,7 +6,9 @@ import { Home } from '../templates/Home/index';
 import { Cart } from '../templates/Cart/index';
 import { Login } from '../templates/Login/index';
 import { Cadastro } from '../templates/Cadastro/index';
-import { gProdutos } from '../templates/Fornecedor';
+import { gProdutos } from '../templates/Fornecedor/gProdutos';
+import { serFornecedor } from '../templates/Fornecedor/serFornecedor';
+import { Pagamento } from '../templates/Pagamento/index';
 
 export default function mainRoutes() {
   return (
@@ -16,6 +18,8 @@ export default function mainRoutes() {
       <Route exact path="/login" component={Login}/>
       <Route exact path="/cadastro" component={Cadastro}/>
       <Route exact path="/gerenciar-produtos" component={gProdutos}/>
+      <Route exact path="/seja-fornecedor" component={serFornecedor}/>
+      <Route exact path="/pagamento" component={Pagamento}/>
     </Switch>
   );
 }

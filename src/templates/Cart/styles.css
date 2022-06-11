@@ -37,7 +37,7 @@
 .flex-mycart{
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 
   border-bottom: 1px solid #C2C2C2;
 }
@@ -214,6 +214,12 @@ input[id="total"]{
   color: #fff;
   border: none;
   border-radius: 5px;
+
+  text-decoration: none;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .voltar-carrinho{
   width: 352px;
@@ -227,6 +233,12 @@ input[id="total"]{
   color: #3BA339;
   border: 0.5px solid #3BA339;
   border-radius: 5px;
+
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .linha-resumo{
   width: 352px;

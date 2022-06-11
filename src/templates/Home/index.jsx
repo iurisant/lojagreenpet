@@ -16,7 +16,6 @@ import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import SloganGreenPet from '../../assets/slogan_greenpet.svg';
 import Instagram from '../../assets/instagram.svg';
-import { MenuUser } from '../../components/MenuUser';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -108,8 +107,6 @@ export const Home = () => {
           </Link>
         </div>
       </div>
-
-      <MenuUser/>
         
       <div className='nav-bar'>
         <Categoria
@@ -184,7 +181,7 @@ export const Home = () => {
             </div>
           </div>
           <div className='footer-fornecedor'>
-            <Link to='/Login'>
+            <Link to='/seja-fornecedor'>
               <button className='button-fornecedor'>
                 TORNE-SE FORNECEDOR
               </button> 
@@ -194,12 +191,12 @@ export const Home = () => {
 
         <div className="footer-botton">
           <p>© 2022 Copyright: GreenPet</p>
-
           <div className="footer-social">
-            <p>REDES SOCIAIS:</p>
+            <div>
             <a href="https://www.instagram.com/lojagreenpet_/">
               <img src={Instagram} alt="instagram-greenpet"/>
             </a>
+            </div>
           </div>
         </div>
       </footer>
