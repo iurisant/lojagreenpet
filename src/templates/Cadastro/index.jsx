@@ -64,7 +64,7 @@ export const Cadastro = () => {
               
               <CurrencyFormat  format="(##) #########" id='telefone' name='telefone' placeholder="Celular/Telefone" onChange={handleChangeValues} mask = "_"/>
 
-              <div className='cadastro-criarsenha'>           
+              <div className='cadastro-criarsenha'> 
                 <input 
                   type='password' 
                   name='senha' 
@@ -90,6 +90,10 @@ export const Cadastro = () => {
               <Link to='/Login'>
                 <button className='cadastro-buttonvoltar'>Voltar</button>
               </Link>
+              <div className='info-senha'>
+                <div className='descricao-senha'>A senha deve conter no mínimo 8 caracteres e no máximo 16.</div>
+                <div className='btn-senha'>?</div>
+              </div>
             </div>
           </div>
         </div>

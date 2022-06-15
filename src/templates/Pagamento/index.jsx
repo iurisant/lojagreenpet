@@ -171,12 +171,12 @@ export const Pagamento = () => {
               <span>Resumo</span>
             </div>
           </div>
-          <button className='button-continuar'>
+          <Link to='/' className='button-continuar'>
             Comprar
-          </button>
-          <button className='button-voltar'>
+          </Link>
+          <Link to='/cart' className='button-voltar'>
             Voltar
-          </button>
+          </Link>
         </div>
       </div>
     </section>

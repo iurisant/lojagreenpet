@@ -149,6 +149,7 @@ input[id="total"]{
 .a-badcart{
   text-decoration: none;
 }
+
 .button-additemcart{
   background-color: #3BA339;
   color: #fff;
@@ -200,6 +201,7 @@ input[id="total"]{
   display: flex;
   align-items: center;
 }
+
 .finalizar-carrinho{
   width: 352px;
   height: 48px;
@@ -207,7 +209,7 @@ input[id="total"]{
   margin-bottom: 10px;
   cursor: pointer;
 
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 
   background-color: #3BA339;
@@ -226,7 +228,7 @@ input[id="total"]{
   height: 48px;
   cursor: pointer;
 
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 
   background-color: #fff;

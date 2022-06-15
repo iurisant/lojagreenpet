@@ -240,7 +240,8 @@ label span{
   border-radius: 5px;
 
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
+  text-decoration: none;
 
   display: flex;
   justify-content: center;
@@ -258,7 +259,8 @@ label span{
   border-radius: 5px;
 
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
+  text-decoration: none;
 
   display: flex;
   justify-content: center;
