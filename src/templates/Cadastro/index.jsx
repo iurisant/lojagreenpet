@@ -19,12 +19,17 @@ export const Cadastro = () => {
   }
 
   const handleClickButton = () => {
-    if(values !== ''){
+    if((values || values !== '') && values.senha === values.csenha){
       Axios.post("http://localhost:3001/register", {
         email: values.email,
         nome: values.nome,
-        telefone: values.telefone
+        telefone: values.telefone,
+        senha: values.senha
       }).then((response)=> console.log(response))
+    }else if(values.senha !== values.csenha){
+      alert("As senhas não codizem!")
+    }else if(!values || values === ''){
+      alert("Você precisa preencher os campos abaixo!")
     }
   }
 
@@ -75,8 +80,10 @@ export const Cadastro = () => {
 
                 <input 
                   type='password' 
+                  name='csenha'
                   id='cadastro-csenha' 
                   placeholder='Confirme sua senha'
+                  onChange={handleChangeValues}
                 />
               </div>
 
