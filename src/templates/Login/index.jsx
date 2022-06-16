@@ -25,8 +25,8 @@ export const Login = () => {
               Login
             </span>
             <div className='login-forms'>
-              <input type='email' id='login-email' placeholder='Digite seu email'/>
-              <input type='password' id='login-senha' placeholder='Digite sua senha'/>
+              <input type='email' id='login-email' maxlength="16"  placeholder='Digite seu email'/>
+              <input type='password' id='login-senha' maxlength="16"  placeholder='Digite sua senha'/>
 
               <div className='login-lembrarsenha'>
                 <div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from "react-helmet";
 import Axios from 'axios'
 import './styles.css';
+import { toast } from 'react-toastify';
 
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -19,17 +20,41 @@ export const Cadastro = () => {
   }
 
   const handleClickButton = () => {
-    if((values || values !== '') && values.senha === values.csenha){
+    if(
+      (values || values !== '') && 
+      (values.senha === values.csenha) && 
+      (values.email) && 
+      (values.nome) && 
+      (values.telefone) && 
+      (values.senha) &&
+      ((values.senha).length >= 8) &&
+      ((values.senha).length <= 16) &&
+      (values.csenha) 
+    ){
       Axios.post("http://localhost:3001/register", {
         email: values.email,
         nome: values.nome,
         telefone: values.telefone,
         senha: values.senha
       }).then((response)=> console.log(response))
-    }else if(values.senha !== values.csenha){
-      alert("As senhas não codizem!")
+
+      toast.success("Cadastrado com sucesso!")
+    }else if(
+      (!values.email || values.email === '')  || 
+      (!values.nome || values.nome === '') || 
+      (!values.telefone || values.telefone === '') ||
+      (!values.senha || values.senha === '') ||
+      (!values.csenha || values.csenha === '') 
+    ){
+      toast.error("Todos os campos devem esta preenchidos!")
     }else if(!values || values === ''){
-      alert("Você precisa preencher os campos abaixo!")
+      toast.error("Você precisa preencher os campos abaixo!")
+    }else if((values.senha).length < 8){
+      toast.error("A senha deve conter no mínimo 8 caracteres!")
+    }else if(values.senha !== values.csenha){
+      toast.error("As senhas não codizem!")
+    }else{
+      toast.error("Ocorreu algum erro, tente novamente!")
     }
   }
 
@@ -56,33 +81,44 @@ export const Cadastro = () => {
                 type='email'
                 name='email'  
                 id='email' 
-                placeholder='Digite seu email' 
+                maxlength="45"
+                placeholder='Digite seu email*' 
                 onChange={handleChangeValues}
               />
               <input 
                 type='text'
                 name='nome'  
                 id='name' 
-                placeholder='Nome completo' 
+                maxlength="50"
+                placeholder='Nome completo*' 
                 onChange={handleChangeValues}
               />
               
-              <CurrencyFormat  format="(##) #########" id='telefone' name='telefone' placeholder="Celular/Telefone" onChange={handleChangeValues} mask = "_"/>
+              <CurrencyFormat  
+                id='telefone' 
+                name='telefone' 
+                placeholder="Celular/Telefone*" 
+                format="(##) #########" 
+                mask = "_"
+                onChange={handleChangeValues} 
+              />
 
               <div className='cadastro-criarsenha'> 
                 <input 
                   type='password' 
                   name='senha' 
-                  id='cadastro-senha' 
-                  placeholder='Crie sua senha' 
+                  id='cadastro-senha'
+                  maxlength="16" 
+                  placeholder='Crie sua senha*' 
                   onChange={handleChangeValues}
                 />
 
                 <input 
                   type='password' 
                   name='csenha'
-                  id='cadastro-csenha' 
-                  placeholder='Confirme sua senha'
+                  id='cadastro-csenha'
+                  maxlength="16"  
+                  placeholder='Confirme sua senha*'
                   onChange={handleChangeValues}
                 />
               </div>

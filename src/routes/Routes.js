@@ -9,6 +9,7 @@ import { Cadastro } from '../templates/Cadastro/index';
 import { gProdutos } from '../templates/Fornecedor/gProdutos';
 import { serFornecedor } from '../templates/Fornecedor/serFornecedor';
 import { Pagamento } from '../templates/Pagamento/index';
+import { Admin } from '../templates/Admin';
 
 export default function mainRoutes() {
   return (
@@ -20,6 +21,7 @@ export default function mainRoutes() {
       <Route exact path="/gerenciar-produtos" component={gProdutos}/>
       <Route exact path="/seja-fornecedor" component={serFornecedor}/>
       <Route exact path="/pagamento" component={Pagamento}/>
+      <Route exact path="/admin" component={Admin}/>
     </Switch>
   );
 }
