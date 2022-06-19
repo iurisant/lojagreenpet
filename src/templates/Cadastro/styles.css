@@ -195,3 +195,10 @@ input[id='cadastro-csenha']{
 .info-senha:hover .descricao-senha{
   display: block;
 }
+
+.form-error{
+  position: absolute;
+  font-size: 10px;
+  padding-left: 3px;
+  color: red;
+}

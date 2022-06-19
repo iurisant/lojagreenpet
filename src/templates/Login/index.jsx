@@ -1,11 +1,34 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
 import './styles.css';
-
+import { Helmet } from "react-helmet";
+import Axios from 'axios'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 import { Link } from 'react-router-dom';
+
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 
 export const Login = () => {
+  const handleClickLogin = (values) => {
+    Axios.post('http://localhost:3001/login',{
+      email: values.email,
+      senha: values.senha,
+    }).then((response) => {
+      console.log(response)
+    });
+  };
+
+  const validationLogin = yup.object().shape({
+    email: yup.string()
+    .max(45, 'Máximo de 45 caracteres!')
+    .email('Email invalido!')
+    .required('Este campo é obrigatório!'),
+
+    senha: yup.string()
+    .min(8 , 'Mínimo de 8 caracteres!')
+    .max(16, 'Máximo de 16 caracteres!')
+    .required('Este campo é obrigatório!'),
+  })
   return (
     <>
     <Helmet>
@@ -24,24 +47,61 @@ export const Login = () => {
             <span className='login-dectext2'>
               Login
             </span>
-            <div className='login-forms'>
-              <input type='email' id='login-email' maxlength="16"  placeholder='Digite seu email'/>
-              <input type='password' id='login-senha' maxlength="16"  placeholder='Digite sua senha'/>
-
-              <div className='login-lembrarsenha'>
-                <div>
-                  <input type='checkbox' id='lembrar-senha'/>
-                  <label htmlFor="lembrar-senha" className='login-styletext'> Lembrar de mim</label>
+              <Formik
+                initialValues={{ email: '', senha: '' }}
+                onSubmit={handleClickLogin}
+                validationSchema={validationLogin}
+              >
+                <Form className='cadastro-forms'>
+                  <div>
+                    <ErrorMessage
+                      component='div'
+                      name='email'
+                      className='form-error'
+                    />
+                    <Field
+                      type='email'
+                      name='email'  
+                      id='email' 
+                      placeholder='Digite seu email*' 
+                      maxLength="45" 
+                    />
+                  </div>
+                  <div>
+                    <ErrorMessage
+                      component='div'
+                      name='senha'
+                      className='form-error'
+                    />
+                    <Field
+                      type='password' 
+                      name='senha' 
+                      id='login-senha'
+                      placeholder='Crie sua senha*' 
+                      maxLength="16" 
+                    />
+                  </div>
+                <div className='login-lembrarsenha'>
+                  <div>
+                    <input
+                      type='checkbox' 
+                      id='lembrar-senha'
+                    />
+                    <label htmlFor="lembrar-senha" className='login-styletext'> Lembrar de mim</label>
+                  </div>
+                  <Link to='/' className='login-styletext'>
+                    Esqueceu sua senha?
+                  </Link>
                 </div>
-                <Link to='/'>
-                  <span className='login-styletext'>Esqueceu sua senha?</span>
-                </Link>
-              </div>
 
-              <Link to='/'>
-                <button className='login-buttonlogin login-dectext'>Login</button>
-              </Link>
-            </div>
+                <button 
+                  className='login-buttonlogin login-dectext' 
+                  type='submit'
+                >
+                  Login
+                </button>
+                </Form>
+              </Formik>
 
             <div className='login-forms'>
               <div className='login-nconta'>
@@ -49,11 +109,11 @@ export const Login = () => {
                 <div className='login-textconta'> Não tem conta? </div>
                 <div className='login-linhaconta'></div>
               </div>
-              <Link to='/cadastro'>
-                <button className='login-buttonlogin login-dectext'>Cadastrar-se</button>
+              <Link to='/cadastro' className='login-buttonlogin button-dectext'>
+                Cadastrar-se
               </Link>
-              <Link to='/'>
-                <button className='login-buttonvoltar'>Voltar</button>
+              <Link to='/' className='login-buttonvoltar button-dectext'>
+                Voltar
               </Link>
             </div>
           </div>

@@ -1,9 +1,11 @@
 .menu-user{
-  height: 100px;
-  width: 140px;
+  height: auto;
+  width: auto;
 
   background-color: #f8f8f8;
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-top: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-left: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-right: 0.5px solid hsla(0, 0%, 0%, 0.25);
 
   margin-top: 10px;
 }
@@ -26,6 +28,7 @@
 
 .menu-user a{
   text-decoration: none;
+  color: #000;
 }
 
 .button-gprodutos img{
@@ -41,4 +44,8 @@
 
   position: absolute;
   top: 55px;
+}
+
+.menu-user a:hover{
+  background-color: #f8f8f8;
 }
