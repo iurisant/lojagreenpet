@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './styles.css';
 import { Helmet } from "react-helmet";
 import Axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/auth';
 
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 
@@ -16,7 +17,11 @@ export const Login = () => {
     }).then((response) => {
       console.log(response)
     });
+
+    login(values.email, values.senha);
   };
+
+  const { autenticated, login } = useContext(AuthContext);
 
   const validationLogin = yup.object().shape({
     email: yup.string()
@@ -41,7 +46,6 @@ export const Login = () => {
         </Link>
       </div>
       <div className='container-login'>
-
         <div className='login-form'>
           <div className='login'>
             <span className='login-dectext2'>

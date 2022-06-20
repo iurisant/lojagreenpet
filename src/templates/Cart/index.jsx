@@ -51,7 +51,6 @@ export const Cart = () => {
         <div className='login-cart'>
           <Link to='/login' className='button-login' >
             <ButtonUser 
-              text="Crie sua conta"
             />
           </Link>
           <Link to='/cart' className='button-cart'>

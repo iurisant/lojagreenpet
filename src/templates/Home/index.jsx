@@ -99,7 +99,6 @@ export const Home = () => {
         <div className='login-cart'>
           <Link to='/login' className='button-login' >
             <ButtonUser 
-              text="Crie sua conta"
             />
           </Link>
           <Link to='/cart' className='button-cart'>
@@ -107,7 +106,6 @@ export const Home = () => {
           </Link>
         </div>
       </div>
-        
       <div className='nav-bar'>
         <Categoria
           text="Cachorros"

@@ -1,21 +1,26 @@
 import './styles.css';
 
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import Usuario from './img/user.svg';
-import { MenuUser } from '../MenuUser';
+import { MenuUser } from '../MenuUser'; 
+import { AuthContext } from '../../context/auth';
 
-export class ButtonUser extends Component{
-  render(){
-    const { text } = this.props;
+export const ButtonUser = () => {
 
-    return(
-      <div className='open-usermenu'>
-        <div className='button-login'>
-          <img src={Usuario} alt="usuario"/>
-          {text}
-        </div>
-        <MenuUser/>
+  const autenticated = useContext(AuthContext);
+  
+  return(
+    <div className='open-usermenu'>
+      <div className='button-login'>
+        <img src={Usuario} alt="usuario"/>
+          {autenticated && (
+            <p>Crie uma conta</p>
+          )}
+          {!autenticated && (
+            <p>Crie uma conta</p>
+          )}
       </div>
-    )
-  }
+      <MenuUser/>
+    </div>
+  )
 }
