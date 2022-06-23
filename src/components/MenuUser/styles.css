@@ -1,6 +1,6 @@
 .menu-user{
   height: auto;
-  width: auto;
+  width: 150px;
 
   background-color: #f8f8f8;
   border-top: 0.5px solid hsla(0, 0%, 0%, 0.25);
@@ -10,13 +10,29 @@
   margin-top: 10px;
 }
 
+.links-gprodutos{
+  background-color: #fff;
+  border: none;
+  border-bottom: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  
+  padding: 7px 0px;
+  width: 100%;
+  cursor: pointer;
+  
+  text-align: initial;
+  font-size: 12px;
+
+  display: flex;
+  align-items: center;
+}
+
 .button-gprodutos{
   background-color: #fff;
   border: none;
   border-bottom: 0.5px solid hsla(0, 0%, 0%, 0.25);
   
-  padding: 7px;
-  width: 90%;
+  padding: 7px 0px;
+  width: 100%;
   cursor: pointer;
   
   text-align: initial;
@@ -34,7 +50,15 @@
 .button-gprodutos img{
   width: 12px;
   height: 12px;
-  margin: 4px;
+  margin: 4px 4px 4px 8px;
+
+  border: none;
+}
+
+.links-gprodutos img{
+  width: 12px;
+  height: 12px;
+  margin: 4px 4px 4px 8px;
 
   border: none;
 }
@@ -47,5 +71,9 @@
 }
 
 .menu-user a:hover{
+  background-color: #f8f8f8;
+}
+
+.menu-user button:hover{
   background-color: #f8f8f8;
 }

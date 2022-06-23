@@ -98,8 +98,7 @@ export const Home = () => {
         </div>
         <div className='login-cart'>
           <Link to='/login' className='button-login' >
-            <ButtonUser 
-            />
+            <ButtonUser/>
           </Link>
           <Link to='/cart' className='button-cart'>
             <ButtonCart/>
@@ -179,10 +178,8 @@ export const Home = () => {
             </div>
           </div>
           <div className='footer-fornecedor'>
-            <Link to='/seja-fornecedor'>
-              <button className='button-fornecedor'>
+            <Link to='/seja-fornecedor' className='button-fornecedor'>
                 TORNE-SE FORNECEDOR
-              </button> 
             </Link>  
           </div>
         </div>

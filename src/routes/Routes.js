@@ -2,15 +2,9 @@ import { useContext } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { AuthContext } from '../context/auth'
 
-export default function RouteWraper(
-  {
-    component: Component,
-    isPrivate,
-    ...rest
-  })
-{
-  const { autenticated } = useContext(AuthContext);
+export default function RouteWraper({component: Component, isPrivate, ...rest}){
 
+  const { autenticated } = useContext(AuthContext);
 
   if (!autenticated && isPrivate) {
     return (
@@ -18,7 +12,7 @@ export default function RouteWraper(
     );
   }
 
-  if (autenticated && (!isPrivate)) {
+  if (autenticated && !isPrivate) {
     return (
       <Redirect to="/" />
     );

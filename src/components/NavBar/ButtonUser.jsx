@@ -7,14 +7,14 @@ import { AuthContext } from '../../context/auth';
 
 export const ButtonUser = () => {
 
-  const autenticated = useContext(AuthContext);
+  const { autenticated } = useContext(AuthContext);
   
   return(
     <div className='open-usermenu'>
       <div className='button-login'>
         <img src={Usuario} alt="usuario"/>
           {autenticated && (
-            <p>Crie uma conta</p>
+            <p>Nome Usuário</p>
           )}
           {!autenticated && (
             <p>Crie uma conta</p>
