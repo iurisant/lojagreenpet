@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import './styles.css';
@@ -6,11 +6,52 @@ import './styles.css';
 //my components
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
-import Camera from '../../assets/camera.svg';
+import Camera from '../../assets/camera.svg'; 
 import CurrencyFormat from 'react-currency-format';
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as yup from 'yup';
+import Axios from 'axios';
+import { storage } from '../../fireBaseConnection'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { v4 } from 'uuid'
+import { toast } from 'react-toastify';
 
-export const gProdutos = () => {
+export const GProdutos = () => {
+  const [imageUpload, setImageUpload] = useState(null); 
+
+  const handleClickRegisterProducts = (values) => {
+    if(!imageUpload) return;
+    const imageRef = ref(storage, `produtos/${imageUpload.name + v4()}`);
+
+    uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
+      getDownloadURL(snaphsot.ref).then((url)=>{
+        Axios.post('http://localhost:3001/products',{
+          nome: values.nome,  
+          valor: values.valor,
+          categoria: values.categoria,  
+          quantidade: values.quantidade,
+          imagem: url,
+        }).then((response) => {
+          return response
+        });
+      })
+    })
+
+    toast.success("Produto cadastrado com sucesso!")
+  };
+  
+  const validationRegister = yup.object().shape({
+    nome: yup.string()
+    .max(45, 'Máximo de 45 caracteres!')
+    .required('Este campo é obrigatório!'),
+
+    valor: yup.number().required('Este campo é obrigatório!'),
+
+    categoria: yup.mixed().required('Este campo é obrigatório!'),
+
+    quantidade: yup.number().required('Este campo é obrigatório!'),
+  })
 
   return (
     <>
@@ -25,8 +66,7 @@ export const gProdutos = () => {
         </Link>
         <div className='login-cart'>
           <Link to='/login' className='button-login' >
-            <ButtonUser 
-            />
+            <ButtonUser/>
           </Link>
           <Link to='/cart' className='button-cart'>
             <ButtonCart/>
@@ -43,9 +83,9 @@ export const gProdutos = () => {
             </div>
             <div className='flex-mycart cart-product'>
               <div className='flex-myitencart'>
-                <img
+                {/* <img
                   className='img-productcart'
-                />
+                /> */}
                 <div className='tittle-productcart'>
                 </div>
               </div>
@@ -58,71 +98,132 @@ export const gProdutos = () => {
             <div className='title-gprodutos'>
               <strong>Novo Produto</strong>
             </div>
-            <div className="inputs-gprodutos">
-              <p>Nome do produto*</p>
-              <input 
-                type='text'
-                name='nome'  
-                id='nome-produto' 
-              />
+            <Formik
+              initialValues={{ nome: '', valor: '', categoria: '', quantidade: '', imagem: null}}
+              onSubmit={handleClickRegisterProducts}
+              validationSchema={validationRegister}
+            >
+            <Form className="inputs-gprodutos">
+              <div className="fildes">
+                <p>Nome do produto*</p>
+                <ErrorMessage
+                  component='div'
+                  name='nome'
+                  className='form-error'  
+                />
+                <Field
+                  type='text'
+                  name='nome'  
+                  id='nome-produto' 
+                  maxLength="45" 
+                />
+              </div>
 
-              <p>Valor do produto (unidade)*</p>
-              <CurrencyFormat 
-                id='valor' 
-                prefix="R$" 
-                decimalSeparator=","
-                decimalScale={2}
-                allowNegative={false}
-              />
+              <div className="fildes">
+                <p>Valor do produto (unidade)*</p>
+                <ErrorMessage
+                  component='div'
+                  name='valor'
+                  className='form-error-price'  
+                />
+                <div className='input-price'>
+                <div className='currency-price'>R$</div>
+                  <Field name="valor">{({ field }) => (
+                    <CurrencyFormat 
+                      {...field}
+                      id='valor'
+                      decimalSeparator="."
+                      decimalScale={2}
+                      allowNegative={false}
+                    />
+                  )}
+                  </Field>
+                </div>
+              </div>
 
-              <p>Categoria*</p>
-              <select name="cars" id="cars">
-                <option value="Cachorros">Cachorros</option>
-                <option value="Gatos">Gatos</option>
-                <option value="Pássaros">Pássaros</option>
-                <option value="Peixes">Peixes</option>
-                <option value="Répteis">Répteis</option>
-                <option value="Roedores">Roedores</option>
-              </select>
+              <div className="fildes">
+                <p>Categoria*</p>
+                <ErrorMessage
+                  component='div'
+                  name='categoria'
+                  className='form-error'  
+                />
+                <Field as="select" name="categoria" id="categoria">
+                  <option value=""></option>
+                  <option value="Cachorros">Cachorros</option>
+                  <option value="Gatos">Gatos</option>
+                  <option value="Passaros">Pássaros</option>
+                  <option value="Peixes">Peixes</option>
+                  <option value="Repteis">Répteis</option>
+                  <option value="Roedores">Roedores</option>
+                </Field>
+              </div>  
 
-              <div className='qtdimg'>
+              <div className='qtdimg fildes'>
                 <div>
                   <p>Quantidade*</p>
-                  <CurrencyFormat
-                    id='quantidade' 
-                    name='quantidade' 
-                    decimalSeparator=""
-                    allowNegative={false}
+                  <ErrorMessage
+                    component='div'
+                    name='quantidade'
+                    className='form-error'  
                   />
+                  <Field name="quantidade">{({ field }) => (
+                    <CurrencyFormat 
+                      {...field}
+                      id='quantidade' 
+                      decimalSeparator=""
+                      allowNegative={false}
+                    />
+                  )}
+                  </Field>
                 </div>
                 <div>
-                  <p>Imagem do produto*</p>
-                  <label for="imagem">
-                    <img 
-                      alt='Camera' 
-                      src={Camera} 
-                      className='svg-camera'
-                    />
-                    Inserir imagem ao produto
+                 <p>Imagem do produto*</p>
+                  <label htmlFor="imagem">
+                    {!imageUpload && (
+                      <>
+                        <img 
+                          alt='Camera' 
+                          src={Camera} 
+                          className='svg-camera'
+                        />
+                        <p>Inserir imagem ao produto</p>
+                      </>
+                    )}
+                    {imageUpload && (
+                      <>
+                        <img 
+                          alt='Camera' 
+                          src={Camera} 
+                          className='svg-camera'
+                        />
+                        <p className='status-img'>{String(imageUpload.name)}</p>
+                      </>
+                    )}
                   </label>
-                  <input 
-                    type='file'
+                  <input
                     name='imagem'
-                    accept="image/*"  
+                    accept='image/*'
                     id='imagem'
+                    type='file'
+                    hidden
+                    onChange={(e) => {
+                      setImageUpload(e.target.files[0]);
+                    }}
                   />
                 </div>
               </div>
-            </div>
-
-            <div className='resumo-produto '>
-              <button 
-                className="submit-produto"
-              >
-                Adicionar
-              </button>
-            </div>
-          </div>
+              <div className='resumo-produto '>
+                <button 
+                  className="submit-produto"
+                  type='submit'
+                >
+                  Adicionar
+                </button>
+              </div>
+            </Form>
+          </Formik>
+        </div>
       </div>
     </section>
     </>

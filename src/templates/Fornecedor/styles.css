@@ -17,10 +17,9 @@
   background-color: #fff;
   border: 1px solid #C2C2C2;
   border-radius: 5px;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column
+}
+.fildes{
+  padding: 0px 24px;
 }
 .inputs-gprodutos{
   margin-top: 20px;
@@ -49,13 +48,16 @@ select{
   border-radius: 5px;
 }
 input[id='valor']{
-  width: 322px;
+  width: 272px;
   height: 48px;
   padding: 0px 12px;
   margin-bottom: 12px;
 
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
+  border-top: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-right: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-bottom: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-left: 0.5px #3BA339;
+  border-radius: 0px 5px 5px 0px;
 
   font-size: 14px;
 }
@@ -166,4 +168,38 @@ label[for='imagem']{
 }
 .info-fornecedor span{
   font-size: 24px;
+}
+.input-price{
+  display: flex;
+}
+.currency-price{
+  width: 50px;
+  height: 48px;
+
+  background-color: #f8f8f8;
+  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px 0px 0px 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 400;
+  color: #a8a8a8;
+}
+
+.form-error-price{
+  position: absolute;
+  font-size: 10px;
+  padding-left: 54px;
+  color: red;
+}
+.status-img{
+  display: flex;
+  align-items: center;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  overflow: hidden;
 }

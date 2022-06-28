@@ -21,7 +21,7 @@ export const Login = () => {
     login(values.email, values.senha);
   };
 
-  const { autenticated, login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const validationLogin = yup.object().shape({
     email: yup.string()

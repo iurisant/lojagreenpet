@@ -4,10 +4,10 @@ import { Helmet } from "react-helmet";
 import Axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import MaskedInput from "react-text-mask";
 import { Link } from 'react-router-dom';
 
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
+import CurrencyFormat from 'react-currency-format';
 
 export const Cadastro = () => {
   const handleClickRegister = (values) => {
@@ -32,7 +32,8 @@ export const Cadastro = () => {
     .required('Este campo é obrigatório!'),
 
     telefone: yup.string()
-    .required('Este campo é obrigatório!'),
+    .required('Este campo é obrigatório!')
+    .min(14 , 'Mínimo de 14 caracteres!'),
 
     senha: yup.string()
     .min(8 , 'Mínimo de 8 caracteres!')
@@ -45,10 +46,6 @@ export const Cadastro = () => {
     .max(16, 'Máximo de 16 caracteres!')
     .required('Este campo é obrigatório!'),
   })
-
-  const phoneNumberMask = [
-    "(",/[1-9]/,/\d/,")"," ",/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/
-  ];
 
   return (
     <>
@@ -109,12 +106,13 @@ export const Cadastro = () => {
                     className='form-error'
                   />
                   <Field name="telefone" maxLength="14" >{({field }) => (
-                    <MaskedInput
+                    <CurrencyFormat 
                       {...field}
-                      mask={phoneNumberMask}
-                      id="telefone"
-                      placeholder="Telefone/Celular*"
-                      type="text"
+                      id='telefone'
+                      format="(##) #########" 
+                      mask=""
+                      placeholder='Telefone | Celular*'
+                      allowNegative={false}
                     />
                   )}
                   </Field>
