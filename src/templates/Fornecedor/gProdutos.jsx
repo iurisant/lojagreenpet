@@ -26,7 +26,7 @@ export const GProdutos = () => {
 
     uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
       getDownloadURL(snaphsot.ref).then((url)=>{
-        Axios.post('http://localhost:3001/products',{
+        Axios.post('https://greenpet-2022.herokuapp.com/products',{
           nome: values.nome,  
           valor: values.valor,
           categoria: values.categoria,  

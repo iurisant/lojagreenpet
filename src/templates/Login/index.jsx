@@ -11,7 +11,7 @@ import LogoGreenPet from '../../assets/logo_greenpet.svg';
 
 export const Login = () => {
   const handleClickLogin = (values) => {
-    Axios.post('http://localhost:3001/login',{
+    Axios.post('https://greenpet-2022.herokuapp.com/login',{
       email: values.email,
       senha: values.senha,
     }).then((response) => {
