@@ -16,9 +16,8 @@ export const Login = () => {
       senha: values.senha,
     }).then((response) => {
       console.log(response)
+      login(response.data.msg, values.email);
     });
-
-    login(values.email, values.senha);
   };
 
   const { login } = useContext(AuthContext);

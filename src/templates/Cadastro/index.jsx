@@ -161,7 +161,7 @@ export const Cadastro = () => {
 
               <div 
               className='btn-senha' 
-              aria-label='A senha deve conter no mínimo 8 e no máximo 16 caracteres.'
+              title='A senha deve conter no mínimo 8 e no máximo 16 caracteres.'
               >
               ?
               </div>

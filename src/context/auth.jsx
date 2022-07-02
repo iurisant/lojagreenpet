@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 export const AuthContext = createContext();
 
@@ -15,16 +16,20 @@ export const AuthProvider = ({ children }) =>{
     loadUser()
   }, [])
 
-  const login = (email, senha) =>{
-    
-    const loggedUser = {
-      id:  1,
-      email: email,
+  const login = (validacao, email) =>{ 
+    if(validacao === "Logado com sucesso!"){
+      setUser(email)
+      localStorage.setItem("user", JSON.stringify(email))
+
+      toast.success(validacao)
     }
 
-    if(email === "iuri.s.goes@gmail.com" && senha === "12345678"){
-      setUser({ id: "1", email })
-      localStorage.setItem("user", JSON.stringify(loggedUser))
+    if(validacao === "Email não encontrado!"){
+      toast.error(validacao)
+    }
+
+    if(validacao === "Senha não encontrado!"){
+      toast.error(validacao)
     }
   }
 
@@ -33,18 +38,12 @@ export const AuthProvider = ({ children }) =>{
     setUser(null);
   }
 
-  function setLocalUser(data){
-    localStorage.setItem('usuarioLogado', JSON.stringify(data));
-  }
-
   return(
-    
     <AuthContext.Provider value={{
       autenticated: !!user,
       user, 
       login, 
       logout,
-      setLocalUser,
     }}>
     {children}
     </AuthContext.Provider>

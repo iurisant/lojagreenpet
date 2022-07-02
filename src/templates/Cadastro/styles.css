@@ -162,40 +162,6 @@ input[id='cadastro-csenha']{
 
 }
 
-[aria-label] {
-  position: relative;
-}
-
-[aria-label]::after {
-  content: attr(aria-label);
-
-  width: 335px;
-  height: 14px;
-
-  display: none;
-
-  position: relative;
-  bottom: 25px;
-  left: 25px;
-  z-index: 5000;
-  
-  pointer-events: none;
-  padding: 8px 10px;
-
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 400;
-
-  color: #3BB139;
-  background-color: #fff;
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-}
-
-[aria-label]:hover::after {
-  display: block;
-}
-
 .form-error{
   position: absolute;
   font-size: 10px;
