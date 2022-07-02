@@ -16,17 +16,15 @@ export const AuthProvider = ({ children }) =>{
   }, [])
 
   const login = (email, senha) =>{
-    console.log("login", {email, senha});
-
+    
     const loggedUser = {
       id:  1,
       email: email,
     }
 
-    localStorage.setItem("user", JSON.stringify(loggedUser))
-
     if(email === "iuri.s.goes@gmail.com" && senha === "12345678"){
       setUser({ id: "1", email })
+      localStorage.setItem("user", JSON.stringify(loggedUser))
     }
   }
 
@@ -35,13 +33,18 @@ export const AuthProvider = ({ children }) =>{
     setUser(null);
   }
 
+  function setLocalUser(data){
+    localStorage.setItem('usuarioLogado', JSON.stringify(data));
+  }
+
   return(
     
     <AuthContext.Provider value={{
       autenticated: !!user,
       user, 
       login, 
-      logout
+      logout,
+      setLocalUser,
     }}>
     {children}
     </AuthContext.Provider>

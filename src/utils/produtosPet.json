@@ -1,122 +1,122 @@
 [
   {
-   "id": "1",
-   "title": "Ração Golden Special Sabor Frango e Carne para Cães Adultos",
-   "url": "https://i.imgur.com/2XbDZtA.jpeg",
-   "price": "142.90",
-   "ammount": "2",
-   "category": "Cachorros"
+   "idProduto": "1",
+   "nome": "Ração Golden Special Sabor Frango e Carne para Cães Adultos",
+   "imagem": "https://i.imgur.com/2XbDZtA.jpeg",
+   "valor_Uni": "142.90",
+   "quantidade": "2",
+   "categoria": "Cachorros"
   },
   {
-   "id": "2",
-   "title": "Ração GranPlus Choice Frango e Carne para Cães Adultos",
-   "url": "https://i.imgur.com/Y71Fqv9.jpeg",
-   "price": "179.90",
-   "ammount": "3",
-   "category": "Cachorros"
+   "idProduto": "2",
+   "nome": "Ração GranPlus Choice Frango e Carne para Cães Adultos",
+   "imagem": "https://i.imgur.com/Y71Fqv9.jpeg",
+   "valor_Uni": "179.90",
+   "quantidade": "3",
+   "categoria": "Cachorros"
   },
   {
-   "id": "3",
-   "title": "Ração Nutrópica Porquinho da Índia",
-   "url": "https://i.imgur.com/PFQV91C.jpeg",
-   "price": "104.90",
-   "ammount": "3",
-   "category": "Roedores"
+   "idProduto": "3",
+   "nome": "Ração Nutrópica Porquinho da Índia",
+   "imagem": "https://i.imgur.com/PFQV91C.jpeg",
+   "valor_Uni": "104.90",
+   "quantidade": "3",
+   "categoria": "Roedores"
   },
   {
-   "id": "4",
-   "title": "Ração Seca PremieR Pet Duii Cordeiro e Peru para Cães Adultos Pequeno Porte",
-   "url": "https://i.imgur.com/FZfwfI3.jpeg",
-   "price": "104.90",
-   "ammount": "3",
-   "category": "Cachorros"
+   "idProduto": "4",
+   "nome": "Ração Seca PremieR Pet Duii Cordeiro e Peru para Cães Adultos Pequeno Porte",
+   "imagem": "https://i.imgur.com/FZfwfI3.jpeg",
+   "valor_Uni": "104.90",
+   "quantidade": "3",
+   "categoria": "Cachorros"
   },
   {
-   "id": "5",
-   "title": "Ração Royal Canin Sachê Size Health Nutrition Puppy Wet para Cães Filhotes Raças Pequenas",
-   "url": "https://i.imgur.com/WP11tVK.jpeg",
-   "price": "9.99",
-   "ammount": "1",
-   "category": "Cachorros"
+   "idProduto": "5",
+   "nome": "Ração Royal Canin Sachê Size Health Nutrition Puppy Wet para Cães Filhotes Raças Pequenas",
+   "imagem": "https://i.imgur.com/WP11tVK.jpeg",
+   "valor_Uni": "9.99",
+   "quantidade": "1",
+   "categoria": "Cachorros"
   },
   {
-   "id": "6",
-   "title": "Ração Úmida Granplus Sachê Gourmet Frango Para Cães Filhotes - 100g",
-   "url": "https://i.imgur.com/xaV3OHO.jpeg",
-   "price": "2.99",
-   "ammount": "0",
-   "category": "Cachorros"
+   "idProduto": "6",
+   "nome": "Ração ÚmidProdutoa Granplus Sachê Gourmet Frango Para Cães Filhotes - 100g",
+   "imagem": "https://i.imgur.com/xaV3OHO.jpeg",
+   "valor_Uni": "2.99",
+   "quantidade": "0",
+   "categoria": "Cachorros"
   },
   {
-   "id": "7",
-   "title": "Ração Úmida Pedigree Sachê Carne ao Molho para Cães Filhotes - 100 g",
-   "url": "https://i.imgur.com/KS7mLnn.jpeg",
-   "price": "2.99",
-   "ammount": "4",
-   "category": "Cachorros"
+   "idProduto": "7",
+   "nome": "Ração ÚmidProdutoa Pedigree Sachê Carne ao Molho para Cães Filhotes - 100 g",
+   "imagem": "https://i.imgur.com/KS7mLnn.jpeg",
+   "valor_Uni": "2.99",
+   "quantidade": "4",
+   "categoria": "Cachorros"
   },
   {
-   "id": "8",
-   "title": "Ração Nutricon Nutriflakes para Peixes - 500g",
-   "url": "https://i.imgur.com/FBznsVK.jpg",
-   "price": "81.00",
-   "ammount": "2",
-   "category": "Peixes"
+   "idProduto": "8",
+   "nome": "Ração Nutricon Nutriflakes para Peixes - 500g",
+   "imagem": "https://i.imgur.com/FBznsVK.jpg",
+   "valor_Uni": "81.00",
+   "quantidade": "2",
+   "categoria": "Peixes"
   },
   {
-   "id": "9",
-   "title": "Ração Úmida GranPlus Sachê Gourmet Carne para Cães Adultos -100g",
-   "url": "https://i.imgur.com/em52FC6.jpg",
-   "price": "2.99",
-   "ammount": "3",
-   "category": "Cachorros"
+   "idProduto": "9",
+   "nome": "Ração ÚmidProdutoa GranPlus Sachê Gourmet Carne para Cães Adultos -100g",
+   "imagem": "https://i.imgur.com/em52FC6.jpg",
+   "valor_Uni": "2.99",
+   "quantidade": "3",
+   "categoria": "Cachorros"
   },
   {
-   "id": "10",
-   "title": "Ração Úmida GranPlus Sachê Gourmet Frango para Gatos Castrados Adultos - 85g",
-   "url": "https://i.imgur.com/MQfgBB4.jpeg",
-   "price": "2.99",
-   "ammount": "0",
-   "category": "Gatos"
+   "idProduto": "10",
+   "nome": "Ração ÚmidProdutoa GranPlus Sachê Gourmet Frango para Gatos Castrados Adultos - 85g",
+   "imagem": "https://i.imgur.com/MQfgBB4.jpeg",
+   "valor_Uni": "2.99",
+   "quantidade": "0",
+   "categoria": "Gatos"
   },
   {
-   "id": "11",
-   "title": "Areia Sanitária Classic Pipicat - 4 Kg",
-   "url": "https://i.imgur.com/Ulrg8Ja.jpg",
-   "price": "12.90",
-   "ammount": "3",
-   "category": "Gatos"
+   "idProduto": "11",
+   "nome": "Areia Sanitária Classic Pipicat - 4 Kg",
+   "imagem": "https://i.imgur.com/Ulrg8Ja.jpg",
+   "valor_Uni": "12.90",
+   "quantidade": "3",
+   "categoria": "Gatos"
   },
   {
-   "id": "12",
-   "title": "Ração Seca PremieR Pet Golden Salmão para Gatos Adultos Castrados - 10kg",
-   "url": "https://i.imgur.com/N8RlPTo.jpg",
-   "price": "165.90",
-   "ammount": "1",
-   "category": "Gatos"
+   "idProduto": "12",
+   "nome": "Ração Seca PremieR Pet Golden Salmão para Gatos Adultos Castrados - 10kg",
+   "imagem": "https://i.imgur.com/N8RlPTo.jpg",
+   "valor_Uni": "165.90",
+   "quantidade": "1",
+   "categoria": "Gatos"
   },
   {
-   "id": "13",
-   "title": "Ração Zootekna para Jabuti - 300g",
-   "url": "https://i.imgur.com/SOcmHiJ.jpg",
-   "price": "55.90",
-   "ammount": "20",
-   "category": "Répteis"
+   "idProduto": "13",
+   "nome": "Ração Zootekna para Jabuti - 300g",
+   "imagem": "https://i.imgur.com/SOcmHiJ.jpg",
+   "valor_Uni": "55.90",
+   "quantidade": "20",
+   "categoria": "Répteis"
   },
   {
-   "id": "14",
-   "title": "Ração Premier Pet Ambientes Internos Cães Filhotes Frango e Salmão",
-   "url": "https://i.imgur.com/8A4eKAb.jpeg",
-   "price": "89.90",
-   "ammount": "8",
-   "category": "Cachorros"
+   "idProduto": "14",
+   "nome": "Ração Premier Pet Ambientes Internos Cães Filhotes Frango e Salmão",
+   "imagem": "https://i.imgur.com/8A4eKAb.jpeg",
+   "valor_Uni": "89.90",
+   "quantidade": "8",
+   "categoria": "Cachorros"
   },
   {
-   "id": "15",
-   "title": "Ração Nutrópica Seleção Natural Calopsita - 90g",
-   "url": "https://i.imgur.com/3EBt1HM.jpg",
-   "price": "90.90",
-   "ammount": "4",
-   "category": "Pássaros"
+   "idProduto": "15",
+   "nome": "Ração Nutrópica Seleção Natural Calopsita - 90g",
+   "imagem": "https://i.imgur.com/3EBt1HM.jpg",
+   "valor_Uni": "90.90",
+   "quantidade": "4",
+   "categoria": "Pássaros"
   }
  ]

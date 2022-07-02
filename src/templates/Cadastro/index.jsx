@@ -159,9 +159,11 @@ export const Cadastro = () => {
                 <button className='cadastro-buttonvoltar'>Voltar</button>
               </Link>
 
-              <div className='info-senha'>
-                <div className='descricao-senha'>A senha deve conter no mínimo 8 e no máximo 16 caracteres.</div>
-                <div className='btn-senha'>?</div>
+              <div 
+              className='btn-senha' 
+              aria-label='A senha deve conter no mínimo 8 e no máximo 16 caracteres.'
+              >
+              ?
               </div>
               </Form>
             </Formik>

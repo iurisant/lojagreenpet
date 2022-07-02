@@ -16,11 +16,11 @@ export const CartProvaider = ({children}) => {
     setCart((old) => {
       let quantity = 0;
       
-      if(old[product.id]){
-        quantity = old[product.id].quantity
+      if(old[product.idProduto]){
+        quantity = old[product.idProduto].quantity
       }
 
-      if(quantity < product.ammount){
+      if(quantity < product.quantidade){
         quantity = quantity + 1
         toast.success("Produto adicionado ao carrinho!")
       }else{
@@ -29,7 +29,7 @@ export const CartProvaider = ({children}) => {
 
       const newCart = {
         ...old,
-        [product.id]: {
+        [product.idProduto]: {
           quantity: quantity,
           product,
         }, 
@@ -44,8 +44,8 @@ export const CartProvaider = ({children}) => {
     setCart((old) => {
       let quantity = 0;
       
-      if(old[product.id]){
-        quantity = old[product.id].quantity
+      if(old[product.idProduto]){
+        quantity = old[product.idProduto].quantity
       }
 
       if(quantity > 1){
@@ -55,7 +55,7 @@ export const CartProvaider = ({children}) => {
 
       const newCart = {
         ...old,
-        [product.id]: {
+        [product.idProduto]: {
           quantity: quantity,
           product,
         }, 

@@ -22,7 +22,7 @@ export const GProdutos = () => {
 
   const handleClickRegisterProducts = (values) => {
     if(!imageUpload) return;
-    const imageRef = ref(storage, `produtos/${imageUpload.name + v4()}`);
+    const imageRef = ref(storage, `produtos/${v4()}`);
 
     uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
       getDownloadURL(snaphsot.ref).then((url)=>{

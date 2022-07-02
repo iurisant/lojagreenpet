@@ -145,9 +145,6 @@ input[id='cadastro-csenha']{
   height: 18px;
   width: 18px;
 
-  margin-bottom: 20px;
-  margin-right: 8px;
-
   border: 1px solid #3BB139;
   border-radius: 50%;
 
@@ -158,41 +155,44 @@ input[id='cadastro-csenha']{
   color: #fff;
 
   cursor: pointer;
+
+  position: relative;
+  bottom: 173px;
+  right: 195px;
+
 }
 
-.descricao-senha{
+[aria-label] {
+  position: relative;
+}
+
+[aria-label]::after {
+  content: attr(aria-label);
+
+  width: 335px;
+  height: 14px;
+
   display: none;
 
-  width: 150px;
-  padding:5px;
+  position: relative;
+  bottom: 25px;
+  left: 25px;
+  z-index: 5000;
+  
+  pointer-events: none;
+  padding: 8px 10px;
 
-  margin-bottom: 20px;
-  margin-right: 8px;
-
-  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
   font-weight: 400;
-  font-size: 10px;
 
+  color: #3BB139;
   background-color: #fff;
   border: 0.5px solid hsla(0, 0%, 0%, 0.25);
   border-radius: 5px;
-
 }
 
-.info-senha{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  width: 198px;
-  height: 58px;
-
-  position: relative;
-  bottom: 182px;
-  right: 275px;
-}
-
-.info-senha:hover .descricao-senha{
+[aria-label]:hover::after {
   display: block;
 }
 

@@ -25,8 +25,8 @@ export const PostCard = ({id, title, url, price, ammount, category, product}) =>
       <img src={url} alt={title} className='img-post'/>
       <div className='post-content'>
         <h1>{title}</h1>
-        <b>R${price.replaceAll('.',',')}</b>
-        <p>ou 3x R${((price/3).toFixed(2)).replaceAll('.',',')} s/ juros</p>
+        <b>R${price.toFixed(2).toString().replaceAll(".", ",")}</b>
+        <p>ou 3x R${((price/3).toFixed(2)).toString().replaceAll(".", ",")} s/ juros</p>
         <p>Produtos disponíveis: {ammount}</p>
         <ButtonAddCart
             onClick={add(product)}

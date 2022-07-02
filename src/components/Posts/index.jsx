@@ -3,19 +3,19 @@ import './styles.css';
 import React from 'react';
 import { PostCard } from '../PostCard/PostCard';
 
-export const Posts = ({posts}) => {
+export const Posts = ({ posts }) => {
   return(
     <section className='grid-post'>
       <div className='posts'>
         {posts.map((post) => (
           <PostCard 
-            key = {post.id}
-            id = {post.id}
-            title = {post.title}
-            url = {post.url}
-            price = {post.price}
-            ammount= {post.ammount}
-            category={post.category}
+            key = {post.idProduto}
+            id = {post.idProduto}
+            title = {post.nome}
+            url = {post.imagem}
+            price = {post.valor_Uni}
+            ammount= {post.quantidade}
+            category={post.categoria}
             product = {post}
           />
         ))}    

@@ -30,15 +30,15 @@ export const Home = () => {
   /* Renderizar posts filtrados */
   const filteredCategoryPosts = categoryValue ? 
     allPosts.filter(post => {
-      return post.category.includes(
-          categoryValue
+      return post.categoria.includes(
+        categoryValue
       );
     })
   : posts
   
   const filteredPosts = searchValue ? 
     allPosts.filter(post => {
-      return post.title.toLowerCase().includes(
+      return post.nome.toLowerCase().includes(
         searchValue.toLowerCase(
           searchValue
         )
@@ -179,7 +179,7 @@ export const Home = () => {
           </div>
           <div className='footer-fornecedor'>
             <Link to='/seja-fornecedor' className='button-fornecedor'>
-                TORNE-SE FORNECEDOR
+              TORNE-SE FORNECEDOR
             </Link>  
           </div>
         </div>

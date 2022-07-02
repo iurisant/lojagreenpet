@@ -34,9 +34,10 @@ export const Cart = () => {
   }, 0)
 
   const subTotal = Object.keys(cart.cart).reduce((prev, curr) => {
-    return prev + (cart.cart[curr].product.price * cart.cart[curr].quantity)
+    return prev + (cart.cart[curr].product.valor_Uni * cart.cart[curr].quantity)
   }, 0)
   
+  console.log(cart.cart)
   return (
     <>
     <Helmet>
@@ -76,11 +77,11 @@ export const Cart = () => {
                     <div className='flex-myitencart'>
                       <img
                         className='img-productcart'
-                        src={cart.cart[key].product.url}
-                        alt={cart.cart[key].product.title}
+                        src={cart.cart[key].product.imagem}
+                        alt={cart.cart[key].product.nome}
                       />
                       <div className='tittle-productcart'>
-                        {cart.cart[key].product.title}
+                        {cart.cart[key].product.nome}
                       </div>
                     </div>
                     <div className='flex-remove'>
@@ -100,7 +101,7 @@ export const Cart = () => {
                         <p>remover</p>
                       </button>
                     </div>
-                    <span className='product-price'>R$ {(cart.cart[key].product.price).replaceAll('.',',')}</span>
+                    <span className='product-price'>R$ {(cart.cart[key].product.valor_Uni).toFixed(2).toString().replaceAll(".", ",")}</span>
                   </div>
                 )}
               )}
@@ -115,7 +116,7 @@ export const Cart = () => {
             </div>
             <div className='resumo-produto'>
               <span>Produtos ({itensCount} itens)</span>
-              <span>R$ {((subTotal).toFixed(2)).replaceAll('.',',')}</span>  
+              <span>R$ {((subTotal).toFixed(2).toString().replaceAll(".", ","))}</span>  
             </div>  
             <div className='resumo-produto'>
               <span>Frete</span>
@@ -126,7 +127,7 @@ export const Cart = () => {
             </div>
             <div className='resumo-produto'>
               <span className='subtotal'>Subtotal:</span>
-              <span className='subtotal'>R$ {((subTotal).toFixed(2)).replaceAll('.',',')}</span>  
+              <span className='subtotal'>R$ {((subTotal).toFixed(2).toString().replaceAll(".", ","))}</span>  
             </div>
             <div className='resumo-produto '>
               <Link to='/pagamento' className="finalizar-carrinho">
