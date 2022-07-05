@@ -23,8 +23,8 @@ export const AuthProvider = ({ children }) =>{
       status: permissao,
     }
     if(msg === "Logado com sucesso!"){
-      setUser(email)
       localStorage.setItem("datauser", JSON.stringify(loggedUser))
+      setUser(email)
       toast.success(msg)
     }
 
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) =>{
   }
 
   const logout = () =>{
-    localStorage.removeItem('dataUser');
+    localStorage.removeItem('datauser');
     setUser(null);
   }
 

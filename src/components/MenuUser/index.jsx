@@ -10,7 +10,6 @@ import { AuthContext } from '../../context/auth';
 export const MenuUser = () => {
 
   const { logout } = useContext(AuthContext);
-  const { autenticated } = useContext(AuthContext);
 
   const statusUser = JSON.parse(localStorage.getItem('datauser'));
 
@@ -21,7 +20,7 @@ export const MenuUser = () => {
   return(
     <div className='position-menu'>
       <div className='menu-user'>
-        {statusUser.status == 'A' && (
+        {statusUser.status === 'A' && (
           <Link to='/admin' className='links-gprodutos'>
             <img src={imgAdmin} alt="Exit"/>
             Adiministrador

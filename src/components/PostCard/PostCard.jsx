@@ -21,7 +21,7 @@ export const PostCard = ({id, title, url, price, ammount, category, product}) =>
   }
 
   return(
-    <div className='post' id={id}>
+    <div className='post'>
       <img src={url} alt={title} className='img-post'/>
       <div className='post-content'>
         <h1>{title}</h1>

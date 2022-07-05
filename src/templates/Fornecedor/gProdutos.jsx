@@ -23,13 +23,15 @@ export const GProdutos = () => {
   const dataUser = JSON.parse(localStorage.getItem('datauser'));
   const emailUser = dataUser.email
 
-  const handleClickRegisterProducts = (values) => {
+  const handleClickRegisterProducts = async (values) => {
+    let msg
+
     if(!imageUpload) return;
     const imageRef = ref(storage, `produtos/${v4()}`);
 
-    uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
+    await uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
       getDownloadURL(snaphsot.ref).then((url)=>{
-        Axios.post('https://greenpet-2022.herokuapp.com/products'/* 'http://localhost:3001/products' */,{
+         Axios.post('https://greenpet-2022.herokuapp.com/products',{
           email: emailUser,
           nome: values.nome,  
           valor: values.valor,
@@ -37,11 +39,17 @@ export const GProdutos = () => {
           quantidade: values.quantidade,
           imagem: url,
         }).then((response) => {
-          return response
+          /* console.log(response) */
+          msg = response.data.msg
         });
       })
     })
-    toast.success("Produto cadastrado com sucesso!")
+
+    if(msg === 'Produto cadastrado com sucesso!'){
+      toast.success(msg)
+    }else{
+      toast.error("Algo deu errado, tente novamente!")
+    }
   };
   
   const validationRegister = yup.object().shape({
