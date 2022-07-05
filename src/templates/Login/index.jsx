@@ -17,20 +17,24 @@ export const Login = () => {
       email: values.email,
       senha: values.senha,
     }).then((response) => {
-      /* console.log(response) */ 
+      console.log(response)
       msg = response.data.msg
     });
 
-    await Axios.post('https://greenpet-2022.herokuapp.com/login/data'/* 'http://localhost:3001/login/data' */,{
-      email: values.email,
-    }).then((response) => {
-      /* console.log(response) */
-      mail = response.data[0].email
-      nome = response.data[0].nome
-      permissao = response.data[0].status
-    });
+    if(msg === "Logado com sucesso!"){
+      await Axios.post('https://greenpet-2022.herokuapp.com/login/data'/* 'http://localhost:3001/login/data' */,{
+        email: values.email,
+      }).then((response) => {
+        console.log(response)
+        mail = response.data[0].email
+        nome = response.data[0].nome
+        permissao = response.data[0].status
+      });
 
-    login(msg, mail, nome, permissao)
+      login(msg, mail, nome, permissao)
+    }else{
+      login(msg)
+    }
   };
 
   const { login } = useContext(AuthContext);
