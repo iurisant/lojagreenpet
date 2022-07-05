@@ -118,7 +118,7 @@ export const Home = () => {
         />
         <Categoria
           text="Pássaros"
-          categoryValue="Pássaros"
+          categoryValue="Passaros"
           handleChange={handleCategoryChange}
         />
         <Categoria
@@ -128,7 +128,7 @@ export const Home = () => {
         />
         <Categoria
           text="Répteis"
-          categoryValue="Répteis"
+          categoryValue="Repteis"
           handleChange={handleCategoryChange}
         />
         <Categoria

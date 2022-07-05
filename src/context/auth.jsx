@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) =>{
 
   useEffect(() => {
     function loadUser(){
-      const recoveredUser = localStorage.getItem('user')
+      const recoveredUser = localStorage.getItem('datauser')
       if (recoveredUser){
         setUser(JSON.parse(recoveredUser))
       }   
@@ -16,25 +16,29 @@ export const AuthProvider = ({ children }) =>{
     loadUser()
   }, [])
 
-  const login = (validacao, email) =>{ 
-    if(validacao === "Logado com sucesso!"){
+  const login = (msg, email, nome, permissao) => { 
+    const loggedUser = {
+      email: email,
+      nome: nome,
+      status: permissao,
+    }
+    if(msg === "Logado com sucesso!"){
       setUser(email)
-      localStorage.setItem("user", JSON.stringify(email))
-
-      toast.success(validacao)
+      localStorage.setItem("datauser", JSON.stringify(loggedUser))
+      toast.success(msg)
     }
 
-    if(validacao === "Email não encontrado!"){
-      toast.error(validacao)
+    if(msg === "Email não encontrado!"){
+      toast.error(msg)
     }
 
-    if(validacao === "Senha não encontrado!"){
-      toast.error(validacao)
+    if(msg === "Senha não encontrado!"){
+      toast.error(msg)
     }
   }
 
   const logout = () =>{
-    localStorage.removeItem('user');
+    localStorage.removeItem('dataUser');
     setUser(null);
   }
 

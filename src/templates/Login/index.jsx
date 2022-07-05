@@ -10,14 +10,27 @@ import { AuthContext } from '../../context/auth';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 
 export const Login = () => {
-  const handleClickLogin = (values) => {
-    Axios.post('https://greenpet-2022.herokuapp.com/login',{
+  let msg, mail, nome, permissao
+
+  const handleClickLogin = async (values) => {
+    await Axios.post('https://greenpet-2022.herokuapp.com/login'/* 'http://localhost:3001/login' */,{
       email: values.email,
       senha: values.senha,
     }).then((response) => {
-      console.log(response)
-      login(response.data.msg, values.email);
+      console.log(response) 
+      msg = response.data.msg
     });
+
+    await Axios.post('https://greenpet-2022.herokuapp.com/login'/* 'http://localhost:3001/login/data' */,{
+      email: values.email,
+    }).then((response) => {
+      console.log(response)
+      mail = response.data[0].email
+      nome = response.data[0].nome
+      permissao = response.data[0].status
+    });
+
+    login(msg, mail, nome, permissao)
   };
 
   const { login } = useContext(AuthContext);

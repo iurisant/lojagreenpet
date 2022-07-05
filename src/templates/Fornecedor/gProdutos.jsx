@@ -18,7 +18,10 @@ import { v4 } from 'uuid'
 import { toast } from 'react-toastify';
 
 export const GProdutos = () => {
-  const [imageUpload, setImageUpload] = useState(null); 
+  const [imageUpload, setImageUpload] = useState(null);
+
+  const dataUser = JSON.parse(localStorage.getItem('datauser'));
+  const emailUser = dataUser.email
 
   const handleClickRegisterProducts = (values) => {
     if(!imageUpload) return;
@@ -26,7 +29,8 @@ export const GProdutos = () => {
 
     uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
       getDownloadURL(snaphsot.ref).then((url)=>{
-        Axios.post('https://greenpet-2022.herokuapp.com/products',{
+        Axios.post('https://greenpet-2022.herokuapp.com/products'/* 'http://localhost:3001/products' */,{
+          email: emailUser,
           nome: values.nome,  
           valor: values.valor,
           categoria: values.categoria,  
@@ -37,13 +41,12 @@ export const GProdutos = () => {
         });
       })
     })
-
     toast.success("Produto cadastrado com sucesso!")
   };
   
   const validationRegister = yup.object().shape({
     nome: yup.string()
-    .max(45, 'Máximo de 45 caracteres!')
+    .max(255, 'Máximo de 255 caracteres!')
     .required('Este campo é obrigatório!'),
 
     valor: yup.number().required('Este campo é obrigatório!'),
@@ -115,7 +118,7 @@ export const GProdutos = () => {
                   type='text'
                   name='nome'  
                   id='nome-produto' 
-                  maxLength="45" 
+                  maxLength="255" 
                 />
               </div>
 
