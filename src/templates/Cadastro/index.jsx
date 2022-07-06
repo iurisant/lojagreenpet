@@ -11,7 +11,7 @@ import CurrencyFormat from 'react-currency-format';
 
 export const Cadastro = () => {
   const handleClickRegister = (values) => {
-    Axios.post('https://greenpet-2022.herokuapp.com/register',{
+    Axios.post('https://greenpet-2022.herokuapp.com/register'/* 'http://localhost:3001/register' */,{
       nome: values.nome,  
       email: values.email,
       telefone: values.telefone,  

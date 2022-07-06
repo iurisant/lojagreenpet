@@ -23,15 +23,15 @@ export const GProdutos = () => {
   const dataUser = JSON.parse(localStorage.getItem('datauser'));
   const emailUser = dataUser.email
 
-  const handleClickRegisterProducts = async (values) => {
-    let msg
+  const handleClickRegisterProducts = (values) => {
 
     if(!imageUpload) return;
     const imageRef = ref(storage, `produtos/${v4()}`);
 
-    await uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
-      getDownloadURL(snaphsot.ref).then((url)=>{
-         Axios.post('https://greenpet-2022.herokuapp.com/products',{
+    uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
+      getDownloadURL(snaphsot.ref).then( (url)=>{
+
+        Axios.post('https://greenpet-2022.herokuapp.com/products'/* "http://localhost:3001/products" */,{
           email: emailUser,
           nome: values.nome,  
           valor: values.valor,
@@ -39,17 +39,22 @@ export const GProdutos = () => {
           quantidade: values.quantidade,
           imagem: url,
         }).then((response) => {
-          /* console.log(response) */
-          msg = response.data.msg
-        });
+          console.log(response)
+        });    
+        
+        Axios.post('https://greenpet-2022.herokuapp.com/products'/* "http://localhost:3001/products/fornecedor" */,{
+          email: emailUser,
+          imagem: url,
+        }).then((response) => {
+          console.log(response)
+          if(response.data.msg === 'Produto cadastrado com sucesso!'){
+            toast.success(response.data.msg)
+          }else{
+            toast.error("Algo deu errado, tente novamente!")
+          }
+        });    
       })
     })
-
-    if(msg === 'Produto cadastrado com sucesso!'){
-      toast.success(msg)
-    }else{
-      toast.error("Algo deu errado, tente novamente!")
-    }
   };
   
   const validationRegister = yup.object().shape({

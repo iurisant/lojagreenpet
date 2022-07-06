@@ -13,7 +13,7 @@ export const Login = () => {
   let msg, mail, nome, permissao
 
   const handleClickLogin = async (values) => {
-    await Axios.post('https://greenpet-2022.herokuapp.com/login'/* 'http://localhost:3001/login' */,{
+    await Axios.post('https://greenpet-2022.herokuapp.com/login' /* 'http://localhost:3001/login' */ ,{
       email: values.email,
       senha: values.senha,
     }).then((response) => {
