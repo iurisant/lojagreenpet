@@ -42,7 +42,7 @@ export const GProdutos = () => {
           console.log(response)
         });    
         
-        Axios.post('https://greenpet-2022.herokuapp.com/products'/* "http://localhost:3001/products/fornecedor" */,{
+        Axios.post('https://greenpet-2022.herokuapp.com/products/fornecedor'/* "http://localhost:3001/products/fornecedor" */,{
           email: emailUser,
           imagem: url,
         }).then((response) => {
