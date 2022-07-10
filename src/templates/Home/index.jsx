@@ -21,7 +21,7 @@ export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [page, setPage] = useState(0);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(25);
   const [searchValue, setSearchValue] = useState('');
   const [categoryValue, setCategoryValue] = useState('');
 
@@ -174,7 +174,7 @@ export const Home = () => {
             </Link>
 
             <div className='footer-contato'>
-              <p>Contato: lojagreenpet@gmail.com</p>
+              <p>Contato: lojagreenpet@hotmail.com</p>
             </div>
           </div>
           <div className='footer-fornecedor'>
@@ -188,7 +188,7 @@ export const Home = () => {
           <p>© 2022 Copyright: GreenPet</p>
           <div className="footer-social">
             <div>
-            <a href="https://www.instagram.com/lojagreenpet_/">
+            <a href="https://www.instagram.com/lojagreenpet_/" target="_blank">
               <img src={Instagram} alt="instagram-greenpet"/>
             </a>
             </div>

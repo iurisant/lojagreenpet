@@ -11,7 +11,7 @@
 }
 .total-gprodutos{
   width: 400px;
-  height: auto;
+  height: 470px;
   margin-top: 115px;
 
   background-color: #fff;
@@ -202,4 +202,19 @@ label[for='imagem']{
   -webkit-line-clamp: 3;
   display: -webkit-box;
   overflow: hidden;
+}
+.produtos-categoria{
+  margin-top: 5px;
+  font-size: 14px;
+  color: #3BA339;
+}
+.center-cart-product{
+  align-items: center;
+  justify-content:center;
+}
+.desc-first-produto{
+  color: #C2C2C2;
+}
+.total-gprodutos span{
+  color: red;
 }

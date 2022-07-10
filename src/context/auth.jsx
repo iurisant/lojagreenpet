@@ -26,13 +26,26 @@ export const AuthProvider = ({ children }) =>{
       localStorage.setItem("datauser", JSON.stringify(loggedUser))
       setUser(email)
       toast.success(msg)
-    }
-
-    if(msg === "Email não encontrado!"){
+    }else if(msg === "Email não encontrado!"){
+      toast.error(msg)
+    }else if(msg === "Senha não encontrado!"){
       toast.error(msg)
     }
+  }
 
-    if(msg === "Senha não encontrado!"){
+  const register = ( msg, email, nome, permissao ) =>{
+    const loggedUser = {
+      email: email,
+      nome: nome,
+      status: permissao,
+    }
+    if(msg === 'Cadastrado com sucesso!'){
+      localStorage.setItem("datauser", JSON.stringify(loggedUser))
+      setUser(email)
+      toast.success(msg)
+    }else if(msg === 'Já existe uma conta com esse email!'){
+      toast.error(msg)
+    }else if(msg === 'Código PIN inválido!'){
       toast.error(msg)
     }
   }
@@ -48,6 +61,7 @@ export const AuthProvider = ({ children }) =>{
       user, 
       login, 
       logout,
+      register,
     }}>
     {children}
     </AuthContext.Provider>

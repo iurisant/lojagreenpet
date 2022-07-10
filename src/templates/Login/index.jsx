@@ -19,7 +19,7 @@ export const Login = () => {
     }).then((response) => {
       console.log(response)
       msg = response.data.msg
-    });
+    }); 
 
     if(msg === "Logado com sucesso!"){
       await Axios.post('https://greenpet-2022.herokuapp.com/login/data'/* 'http://localhost:3001/login/data' */,{

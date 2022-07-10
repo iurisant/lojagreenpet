@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import './styles.css';
@@ -19,9 +19,33 @@ import { toast } from 'react-toastify';
 
 export const GProdutos = () => {
   const [imageUpload, setImageUpload] = useState(null);
-
+  const [products, setProducts] = useState({});
   const dataUser = JSON.parse(localStorage.getItem('datauser'));
-  const emailUser = dataUser.email
+  const emailUser = dataUser.email;
+
+  async function buscarProdutos(){
+    let idsProdutos = []
+
+    await Axios.post("https://greenpet-2022.herokuapp.com/getIds/fornecedor"/* "http://localhost:3001/getIds/fornecedor" */,{
+      email: JSON.parse(localStorage.getItem('datauser')).email
+    }).then((response) => {
+      for (var i = 0; i < response.data.length; i++) {
+        idsProdutos.push(response.data[i].Produto_idProduto) 
+      }
+    }); 
+
+    if(idsProdutos !== []){
+      await Axios.post("https://greenpet-2022.herokuapp.com/getProdutos/fornecedor"/* "http://localhost:3001/getProdutos/fornecedor" */,{
+      ids: idsProdutos
+    }).then((response) => {
+      setProducts(response.data)
+    });
+    }
+  }
+
+  useEffect(() => {
+    buscarProdutos();
+  }, []);
 
   const handleClickRegisterProducts = (values) => {
 
@@ -29,9 +53,9 @@ export const GProdutos = () => {
     const imageRef = ref(storage, `produtos/${v4()}`);
 
     uploadBytes(imageRef, imageUpload).then((snaphsot) =>{
-      getDownloadURL(snaphsot.ref).then( (url)=>{
+      getDownloadURL(snaphsot.ref).then( async(url)=>{
 
-        Axios.post('https://greenpet-2022.herokuapp.com/products'/* "http://localhost:3001/products" */,{
+        await Axios.post('https://greenpet-2022.herokuapp.com/products'/* "http://localhost:3001/products" */,{
           email: emailUser,
           nome: values.nome,  
           valor: values.valor,
@@ -39,16 +63,16 @@ export const GProdutos = () => {
           quantidade: values.quantidade,
           imagem: url,
         }).then((response) => {
-          console.log(response)
+          return response
         });    
         
-        Axios.post('https://greenpet-2022.herokuapp.com/products/fornecedor'/* "http://localhost:3001/products/fornecedor" */,{
+        await Axios.post('https://greenpet-2022.herokuapp.com/products/fornecedor'/* "http://localhost:3001/products/fornecedor" */,{
           email: emailUser,
           imagem: url,
         }).then((response) => {
-          console.log(response)
           if(response.data.msg === 'Produto cadastrado com sucesso!'){
             toast.success(response.data.msg)
+            buscarProdutos();
           }else{
             toast.error("Algo deu errado, tente novamente!")
           }
@@ -95,24 +119,43 @@ export const GProdutos = () => {
           <span className='tittle-mycart'>Gerenciar produtos</span>
           <div className='produtos-mycart'>
              <div className='indices-mycart flex-mycart'>
-              <span className='th-produto'>Produto</span>
+              <span className='th-produto'>Produtos</span>
             </div>
-            <div className='flex-mycart cart-product'>
-              <div className='flex-myitencart'>
-                {/* <img
-                  className='img-productcart'
-                /> */}
-                <div className='tittle-productcart'>
-                </div>
-              </div>
-              <span className='product-price'>R$</span>
-            </div> 
+            {products.length > 0 && (
+            <>
+            {Object.keys(products).map(key =>{
+              return(
+                <div className='flex-mycart cart-product'>
+                  <div className='flex-myitencart'>
+                  <img
+                    src={products[key].imagem}
+                    alt={products[key].nome}
+                    className='img-productcart'
+                  />
+                  <div className='tittle-productcart'>
+                    <p>{products[key].nome}</p>
+                    <p className="produtos-categoria">Categoria: {products[key].categoria} | Estoque: {products[key].quantidade}</p>
+                  </div>
+                  </div>
+                  <span className='product-price'>R$ {(products[key].valor_Uni).toFixed(2).toString().replaceAll(".", ",")}</span>
+                </div> 
+              )
+            })}
+            </>
+          )} 
+          {products.length === 0  && (
+            <>
+              <div className='flex-mycart cart-product center-cart-product'>
+                <p className='desc-first-produto'>Nenhum produto registrado! Adicione um produto.</p>
+              </div> 
+            </>
+          )} 
           </div>
-          <button className='add-produto'>+ Adicionar</button>
+          {/* <button className='add-produto'>+ Adicionar</button> */}
         </div> 
           <div className='total-gprodutos'>
             <div className='title-gprodutos'>
-              <strong>Novo Produto</strong>
+              <strong>Adicione um Produto</strong>
             </div>
             <Formik
               initialValues={{ nome: '', valor: '', categoria: '', quantidade: '', imagem: null}}
@@ -121,7 +164,7 @@ export const GProdutos = () => {
             >
             <Form className="inputs-gprodutos">
               <div className="fildes">
-                <p>Nome do produto*</p>
+                <p>Nome do produto<span>*</span></p>
                 <ErrorMessage
                   component='div'
                   name='nome'
@@ -136,7 +179,7 @@ export const GProdutos = () => {
               </div>
 
               <div className="fildes">
-                <p>Valor do produto (unidade)*</p>
+                <p>Valor do produto (unidade)<span>*</span></p>
                 <ErrorMessage
                   component='div'
                   name='valor'
@@ -158,14 +201,14 @@ export const GProdutos = () => {
               </div>
 
               <div className="fildes">
-                <p>Categoria*</p>
+                <p>Categoria<span>*</span></p>
                 <ErrorMessage
                   component='div'
                   name='categoria'
                   className='form-error'  
                 />
                 <Field as="select" name="categoria" id="categoria">
-                  <option value=""></option>
+                  <option value="" disabled selected hidden></option>
                   <option value="Cachorros">Cachorros</option>
                   <option value="Gatos">Gatos</option>
                   <option value="Passaros">Pássaros</option>
@@ -177,7 +220,7 @@ export const GProdutos = () => {
 
               <div className='qtdimg fildes'>
                 <div>
-                  <p>Quantidade*</p>
+                  <p>Quantidade<span>*</span></p>
                   <ErrorMessage
                     component='div'
                     name='quantidade'
@@ -194,7 +237,7 @@ export const GProdutos = () => {
                   </Field>
                 </div>
                 <div>
-                 <p>Imagem do produto*</p>
+                 <p>Imagem do produto<span>*</span></p>
                   <label htmlFor="imagem">
                     {!imageUpload && (
                       <>
