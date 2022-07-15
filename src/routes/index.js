@@ -15,14 +15,14 @@ import Route from './Routes'
 export default function mainRoutes() {
   return (
     <Switch>
-      <Route isPrivate exact path="/" component={Home}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/cadastro" component={Cadastro}/>
+      <Route isPrivate exact path="/" component={Home}/>
       <Route isPrivate exact path="/cart" component={Cart}/>
-      <Route isPrivate exact path="/seja-fornecedor" component={serFornecedor}/>
-      <Route isPrivate exact path="/gerenciar-produtos" component={GProdutos}/>
-      <Route isPrivate exact path="/pagamento" component={Pagamento}/>
       <Route isPrivate exact path="/admin" component={Admin}/>
+      <Route isPrivate exact path="/pagamento" component={Pagamento}/>
+      <Route isPrivate exact path="/gerenciar-produtos" component={GProdutos}/>
+      <Route isPrivate exact path="/seja-fornecedor" component={serFornecedor}/>
     </Switch>
   );
 }

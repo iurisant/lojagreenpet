@@ -24,11 +24,12 @@ export const AuthProvider = ({ children }) =>{
     }
     if(msg === "Logado com sucesso!"){
       localStorage.setItem("datauser", JSON.stringify(loggedUser))
+      window.localStorage.setItem('token', JSON.stringify(true))
       setUser(email)
       toast.success(msg)
     }else if(msg === "Email não encontrado!"){
       toast.error(msg)
-    }else if(msg === "Senha não encontrado!"){
+    }else if(msg === "Senha não encontrada!"){
       toast.error(msg)
     }
   }
@@ -41,6 +42,7 @@ export const AuthProvider = ({ children }) =>{
     }
     if(msg === 'Cadastrado com sucesso!'){
       localStorage.setItem("datauser", JSON.stringify(loggedUser))
+      window.localStorage.setItem('token', JSON.stringify(true))
       setUser(email)
       toast.success(msg)
     }else if(msg === 'Já existe uma conta com esse email!'){
@@ -52,6 +54,7 @@ export const AuthProvider = ({ children }) =>{
 
   const logout = () =>{
     localStorage.removeItem('datauser');
+    window.localStorage.setItem('token', JSON.stringify(false))
     setUser(null);
   }
 

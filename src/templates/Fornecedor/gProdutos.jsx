@@ -16,10 +16,12 @@ import { storage } from '../../fireBaseConnection'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { v4 } from 'uuid'
 import { toast } from 'react-toastify';
+import ModalLoading from '../../components/Modal/ModalLoading';
 
 export const GProdutos = () => {
   const [imageUpload, setImageUpload] = useState(null);
   const [products, setProducts] = useState({});
+  const [loading, setLoading] = useState(false);
   const dataUser = JSON.parse(localStorage.getItem('datauser'));
   const emailUser = dataUser.email;
 
@@ -48,6 +50,7 @@ export const GProdutos = () => {
   }, []);
 
   const handleClickRegisterProducts = (values) => {
+    setLoading(true)
 
     if(!imageUpload) return;
     const imageRef = ref(storage, `produtos/${v4()}`);
@@ -76,6 +79,7 @@ export const GProdutos = () => {
           }else{
             toast.error("Algo deu errado, tente novamente!")
           }
+          setLoading(false)
         });    
       })
     })
@@ -125,19 +129,26 @@ export const GProdutos = () => {
             <>
             {Object.keys(products).map(key =>{
               return(
-                <div className='flex-mycart cart-product'>
+                <div className='flex-mycart cart-product2'>
                   <div className='flex-myitencart'>
-                  <img
-                    src={products[key].imagem}
-                    alt={products[key].nome}
-                    className='img-productcart'
-                  />
-                  <div className='tittle-productcart'>
-                    <p>{products[key].nome}</p>
-                    <p className="produtos-categoria">Categoria: {products[key].categoria} | Estoque: {products[key].quantidade}</p>
+                    <img
+                      src={products[key].imagem}
+                      alt={products[key].nome}
+                      className='img-productcart'
+                    />
+                    <div className='tittle-productcart'>
+                      <p>{products[key].nome}</p>
+                      <p className="produtos-categoria">Categoria: {products[key].categoria} | Estoque: {products[key].quantidade} | R$ {(products[key].valor_Uni).toFixed(2).toString().replaceAll(".", ",")}</p>
+                    </div>
                   </div>
+                  <div className="buttons-products-fornecedor">
+                    <button className="button-edit">
+                      Editar
+                    </button>
+                    <button className="button-delete">
+                      Remover
+                    </button>
                   </div>
-                  <span className='product-price'>R$ {(products[key].valor_Uni).toFixed(2).toString().replaceAll(".", ",")}</span>
                 </div> 
               )
             })}
@@ -284,6 +295,11 @@ export const GProdutos = () => {
           </Formik>
         </div>
       </div>
+      {loading ? (
+        <ModalLoading/>
+      ):(
+        <></>
+      )}
     </section>
     </>
   );

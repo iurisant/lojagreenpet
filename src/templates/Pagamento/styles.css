@@ -1,13 +1,13 @@
 .main-container{
-  padding: 42px 154px;
+  padding: 42px 0px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .container-endereco{
   width: 285px;
   padding: 24px;
-  margin-bottom: 2%;
+  margin-right: 50px;
 
   background-color: #fff;
   border: 0.5px solid hsla(0, 0%, 0%, 0.25);
@@ -16,22 +16,12 @@
 .container-pagamento{
   width: 285px;
   padding: 24px;
-  margin-bottom: 2%;
 
   background-color: #fff;
   border: 0.5px solid hsla(0, 0%, 0%, 0.25);
   border-radius: 5px;
 }
-.container-resumo{
-  width: 285px;
-  height: 220px;
-  padding: 24px;
-  margin-bottom: 5%;
 
-  background-color: #fff;
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-}
 .titulo{
   display:flex;
   align-items: center;
@@ -64,8 +54,8 @@
 }
 
 /* inputs endereco */
-input[id='nome-completo']{
-  width: auto;
+input[id='nomecompleto']{
+  width: 258px;
   height: 40px;
   padding: 0px 12px;
   margin-bottom: 18px;
@@ -76,7 +66,7 @@ input[id='nome-completo']{
   font-size: 14px;
 }
 input[id='cep']{
-  width: auto;
+  width: 258px;
   height: 40px;
   padding: 0px 12px;
   margin-bottom: 18px;
@@ -87,7 +77,7 @@ input[id='cep']{
   font-size: 14px;
 }
 input[id='endereco']{
-  width: auto;
+  width: 258px;
   height: 40px;
   padding: 0px 12px;
   margin-bottom: 18px;
@@ -97,8 +87,8 @@ input[id='endereco']{
 
   font-size: 14px;
 }
-input[id='n-residencial']{
-  width: auto;
+input[id='nresidencial']{
+  width: 258px;
   max-width: 80px;
   height: 40px;
   padding: 0px 12px;
@@ -110,7 +100,7 @@ input[id='n-residencial']{
   font-size: 14px;
 }
 input[id='bairro']{
-  width: auto;
+  width: 258px;
   max-width: 144px;
   height: 40px;
   padding: 0px 12px;
@@ -121,8 +111,8 @@ input[id='bairro']{
 
   font-size: 14px;
 }
-input[id='cpf-nota']{
-  width: auto;
+input[id='cpfnota']{
+  width: 258px;
   height: 40px;
   padding: 0px 12px;
   margin-bottom: 18px;
@@ -131,68 +121,6 @@ input[id='cpf-nota']{
   border-radius: 5px;
 
   font-size: 14px;
-}
-
-/* inputs pagamento */
-input[id='cartao']{
-  width: auto;
-  height: 40px;
-  padding: 0px 12px;
-  margin-bottom: 18px;
-
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-
-  font-size: 14px;
-}
-input[id='validade']{
-  width: auto;
-  max-width: 112px;
-  height: 40px;
-  padding: 0px 12px;
-  margin-bottom: 18px;
-
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-
-  font-size: 14px;
-}
-input[id='cvv']{
-  width: auto;
-  max-width: 112px;
-  height: 40px;
-  padding: 0px 12px;
-  margin-bottom: 18px;
-
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-
-  font-size: 14px;
-}
-input[id='nome-titular']{
-  width: auto;
-  height: 40px;
-  padding: 0px 12px;
-  margin-bottom: 18px;
-
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-
-  font-size: 14px;
-}
-select[id='parcelas']{
-  width: auto;
-  height: 40px;
-  padding: 0px 12px;
-  margin-bottom: 18px;
-
-  border: 0.5px solid hsla(0, 0%, 0%, 0.25);
-  border-radius: 5px;
-
-  font-size: 14px;
-}
-.validade-cvv{
-  display: flex;
 }
 .numero-bairro{
   display: flex;
@@ -228,6 +156,10 @@ label span{
     align-items: center;
     padding: 42px 20px;
   }
+  .container-endereco{
+    margin-right: 0px;
+    margin-bottom: 30px;
+  }
 }
 .button-continuar{
   background-color: #3BA339;
@@ -246,6 +178,8 @@ label span{
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 .button-voltar{
   background-color: #fff;
@@ -265,4 +199,47 @@ label span{
   display: flex;
   justify-content: center;
   align-items: center;
+} 
+.center-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-form{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column
+}
+.two-forms{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-error2{
+  position: absolute;
+  font-size: 10px;
+  padding-left: 3px;
+  padding-top: 15px;
+  color: red;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.numero-res{
+  width: 100px;
+}
+
+.resumo-pagamento{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.linha-pagamento{
+  background-color: #c2c2c2;
+  height: 0.5px;
+  width: 100%;
+
+  margin: 25px 0px;
 }

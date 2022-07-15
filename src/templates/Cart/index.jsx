@@ -36,8 +36,7 @@ export const Cart = () => {
   const subTotal = Object.keys(cart.cart).reduce((prev, curr) => {
     return prev + (cart.cart[curr].product.valor_Uni * cart.cart[curr].quantity)
   }, 0)
-  
-  console.log(cart.cart)
+
   return (
     <>
     <Helmet>

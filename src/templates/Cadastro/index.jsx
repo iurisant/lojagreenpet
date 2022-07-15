@@ -10,6 +10,7 @@ import {AuthContext} from '../../context/auth';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import CurrencyFormat from 'react-currency-format';
 import Modal from '../../components/Modal/ModalCadastro';
+import ModalLoading from '../../components/Modal/ModalLoading';
 
 export const Cadastro = () => {
   const { register } = useContext(AuthContext);
@@ -19,8 +20,10 @@ export const Cadastro = () => {
   const [ telefoneCadastro, setTelefoneCadastro ] = useState("");
   const [ senhaCadastro, setSenhaCadastro ] = useState("");
   const [ pinGerado, setPinGerado ] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleClickCheckEmail = (values) => {
+    setLoading(true)
     setNomeCadastro(values.nome)
     setEmailCadastro(values.email)
     setTelefoneCadastro(values.telefone)
@@ -49,6 +52,7 @@ export const Cadastro = () => {
           pin: number,
         }).then((response) =>{
           console.log(response)
+          setLoading(false)
         })
       }else{
         register(response.data.msg)
@@ -57,6 +61,7 @@ export const Cadastro = () => {
   };
 
   const handleClickRegister = (values) => {
+    setLoading(true)
     if(values.pin === pinGerado){
       Axios.post('https://greenpet-2022.herokuapp.com/register'/* 'http://localhost:3001/register' */,{
         nome: nomeCadastro,  
@@ -65,6 +70,7 @@ export const Cadastro = () => {
         senha: senhaCadastro,
       }).then((response) => {
         register(response.data.msg, emailCadastro, nomeCadastro, "C")
+        setLoading(false)
       });
     }else{
       register("Código PIN inválido!")
@@ -224,6 +230,11 @@ export const Cadastro = () => {
           </div>
         </div>
       </div>
+      {loading ? (
+        <ModalLoading/>
+      ):(
+        <></>
+      )}
     </section>
     {isModalVisible ? 
       <Modal>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './styles.css';
 import { Helmet } from "react-helmet";
 import Axios from 'axios'
@@ -8,11 +8,14 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth';
 
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
+import ModalLoading from '../../components/Modal/ModalLoading';
 
 export const Login = () => {
+  const [loading, setLoading] = useState(false);
   let msg, mail, nome, permissao
 
   const handleClickLogin = async (values) => {
+    setLoading(true)  
     await Axios.post('https://greenpet-2022.herokuapp.com/login' /* 'http://localhost:3001/login' */ ,{
       email: values.email,
       senha: values.senha,
@@ -30,11 +33,16 @@ export const Login = () => {
         nome = response.data[0].nome
         permissao = response.data[0].status
       });
-
       login(msg, mail, nome, permissao)
+      setTimeout(()=>{
+        setLoading(false)
+      })
     }else{
       login(msg)
-    }
+      setTimeout(()=>{
+        setLoading(false)
+      })
+    } 
   };
 
   const { login } = useContext(AuthContext);
@@ -138,8 +146,12 @@ export const Login = () => {
             </div>
           </div>
         </div>
-
       </div>
+      {loading ? (
+        <ModalLoading/>
+      ):(
+        <></>
+      )}
     </section>
     </>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import './styles.css';
@@ -12,10 +12,14 @@ import { ButtonCart } from '../../components/NavBar/ButtonCart';
 import Axios from 'axios';
 import CurrencyFormat from 'react-currency-format';
 import { toast } from 'react-toastify';
+import ModalLoading from '../../components/Modal/ModalLoading';
 
 export const Admin = () => {
-  const handleClickRegister = (values) => {
-    Axios.post('https://greenpet-2022.herokuapp.com/admin/register',{
+  const [loading, setLoading] = useState(false);
+
+  const handleClickRegister = async (values) => {
+    setLoading(true)  
+    await Axios.post('https://greenpet-2022.herokuapp.com/admin/register',{
       nome: values.nome,  
       email: values.email,
       telefone: values.telefone,  
@@ -24,6 +28,9 @@ export const Admin = () => {
     }).then((response) => {
       console.log(response)
       toast.success(response.data.msg)
+      setTimeout(()=>{
+        setLoading(false)
+      })
     });
   }; 
 
@@ -169,9 +176,12 @@ export const Admin = () => {
             </Form>
           </Formik>
         </div>
-        <div>
-        </div>
       </div>
+      {loading ? (
+        <ModalLoading/>
+      ):(
+        <></>
+      )}
     </section>
     </>  
   )

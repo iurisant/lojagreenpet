@@ -42,7 +42,7 @@ export const serFornecedor = () => {
           <p>
             <br/>
             Para realizar o pre-cadastro, o futuro fornecedor deve enviar sua informações para nosso email.<br/><br/>
-            lojagreenpet@gmail.com <br/><br/>          
+            lojagreenpet@hotmail.com <br/><br/>          
             Com as seguntes informações:<br/><br/>
             <li>Nome/Razão social;</li>
             <li>CNPJ;</li>

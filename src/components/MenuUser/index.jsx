@@ -21,23 +21,35 @@ export const MenuUser = () => {
     <div className='position-menu'>
       <div className='menu-user'>
         {statusUser.status === 'A' && (
-          <Link to='/admin' className='links-gprodutos'>
-            <img src={imgAdmin} alt="Exit"/>
-            Adiministrador
-          </Link>
+          <>
+            <Link to='/admin' className='links-gprodutos'>
+              <img src={imgAdmin} alt="Exit"/>
+              Adiministrador
+            </Link>
+          </>
         )}
 
         {(statusUser.status === 'A' || statusUser.status === 'F') && (
-          <Link to='/gerenciar-produtos' className='links-gprodutos'>
-            <img src={Engrenagem} alt="Engrenagem"/>
-            Gerenciar Produtos
-          </Link>
+          <>
+            <Link to='/gerenciar-produtos' className='links-gprodutos'>
+              <img src={Engrenagem} alt="Engrenagem"/>
+              Gerenciar Produtos
+            </Link>
+            <button to='/' className='button-gprodutos' onClick={handleClickLogout}>
+              <img src={Exit} alt="Exit"/>
+              Sair
+            </button>
+          </>
         )}
-        
-        <button to='/' className='button-gprodutos' onClick={handleClickLogout}>
-          <img src={Exit} alt="Exit"/>
-          Sair
-        </button>
+
+        {(statusUser.status === 'C') && (
+          <>
+            <button to='/' className='button-gprodutos' onClick={handleClickLogout}>
+              <img src={Exit} alt="Exit"/>
+              Sair
+            </button>
+          </>
+        )}
       </div>
     </div>
   )

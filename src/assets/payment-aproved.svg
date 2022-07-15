@@ -1,0 +1,18 @@
+<svg id="Agrupar_1" data-name="Agrupar 1" xmlns="http://www.w3.org/2000/svg" width="138.831" height="138.831" viewBox="0 0 770 770">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #3bb139;
+        stroke-width: 60px;
+      }
+
+      .cls-2 {
+        fill: #3bb139;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <circle id="Elipse_1" data-name="Elipse 1" class="cls-1" cx="385" cy="385" r="355"/>
+  <path id="Forma_1" data-name="Forma 1" class="cls-2" d="M329,475l-34,44L432,622,655,367l-42-38L424,548Z" transform="translate(-90 -90)"/>
+</svg>

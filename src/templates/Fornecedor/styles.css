@@ -206,6 +206,7 @@ label[for='imagem']{
 .produtos-categoria{
   margin-top: 5px;
   font-size: 14px;
+  font-weight: 500;
   color: #3BA339;
 }
 .center-cart-product{
@@ -217,4 +218,36 @@ label[for='imagem']{
 }
 .total-gprodutos span{
   color: red;
+}
+.buttons-products-fornecedor{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.button-edit{
+  height: 35px;
+  width: 120px;
+  margin-bottom: 10px;
+  
+  border: none;
+  border-radius: 5px;
+
+  font-weight: 600;
+}
+.button-delete{
+  height: 35px;
+  width: 120px;
+
+  border:none;
+  border-radius: 5px;
+
+  background-color: #ff4040;
+  color: #fff;
+
+  font-weight: 600;
+}
+
+.cart-product2{
+  padding: 0px 20px;
+  font-weight: 400;
 }

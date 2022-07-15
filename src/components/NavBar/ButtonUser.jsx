@@ -7,8 +7,8 @@ import { AuthContext } from '../../context/auth';
 
 export const ButtonUser = () => {
   const { autenticated } = useContext(AuthContext);
-
   const dataUser = JSON.parse(localStorage.getItem('datauser'));
+
   const nomeUser = dataUser.nome.split(" ")
 
   return(
@@ -22,7 +22,7 @@ export const ButtonUser = () => {
             <p>Crie uma conta</p>
           )}
       </div>
-      <MenuUser/>
+        <MenuUser/>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import './styles.css';
@@ -8,13 +8,53 @@ import { ButtonUser } from '../../components/NavBar/ButtonUser';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
 import CurrencyFormat from 'react-currency-format';
+import PayPal from '../../components/Modal/PayPal';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as yup from 'yup';
+import { useCart } from '../../hooks/useCart';
 
 export const Pagamento = () => {
+  const [checkout, setCheckOut] = useState(false);
+  const cart = useCart()
+
+  const itensCount = Object.keys(cart.cart).reduce((prev, curr) => {
+    return prev + cart.cart[curr].quantity
+  }, 0)
+
+  const subTotal = Object.keys(cart.cart).reduce((prev, curr) => {
+    return prev + (cart.cart[curr].product.valor_Uni * cart.cart[curr].quantity)
+  }, 0)
+
+  const handleClickOpenPayment = () => {
+    setCheckOut(true);
+  };
+
+  const validationRegister = yup.object().shape({
+    nomecompleto: yup.string()
+    .max(50, 'Máximo de 50 caracteres!')
+    .required('Este campo é obrigatório!'),
+
+    cep: yup.string()
+    .required('Este campo é obrigatório!'),
+
+    endereco: yup.string()
+    .required('Este campo é obrigatório!'),
+
+    nresidencial: yup.string()
+    .max(5, 'Máximo de 5 caracteres!')
+    .required('Este campo é obrigatório!'),
+
+    bairro: yup.string()
+    .required('Este campo é obrigatório!'),
+    
+    cpfnota: yup.string()
+    .required('Este campo é obrigatório!'),
+  })
 
   return (
     <>
     <Helmet>
-      <title>Pagamento</title>
+      <title>Entrega</title>
     </Helmet>
     
     <section className='container'>
@@ -38,144 +78,165 @@ export const Pagamento = () => {
             <strong className='circulo-verde'>1</strong>
             <span>Entrega</span>
           </div>
-          <form>
+          <Formik
+            initialValues={{
+              nomecompleto: '',
+              cep: '',
+              endereco: '',
+              nresidencial: '',
+              bairro: '',
+              cpfnota: '',
+            }}
+            onSubmit={handleClickOpenPayment}
+            validationSchema={validationRegister}
+          >
+          <Form>
+            <div className='flex-form'>
             <label>Nome completo<span>*</span></label>
-            <input 
-              id='nome-completo'
-              type='text'
-              name='nome'
-              placeholder='Ex.: José da Silva'
-            />
+              <ErrorMessage
+                component='div'
+                name='nomecompleto'
+                className='form-error2'
+              />
+              <Field
+                type='text'
+                name='nomecompleto'  
+                id='nomecompleto' 
+                placeholder='Ex.: José da Silva'
+                maxLength="45" 
+              />
+            </div>
+            <div className='flex-form'>
             <label>CEP<span>*</span></label>
-            <CurrencyFormat
-              id='cep' 
-              name='cep' 
-              decimalSeparator=""
-              format="#####-###"
-              mask = "_"
-              allowNegative={false}
-              placeholder='Ex.: 00000-000'
-            />
+              <ErrorMessage
+                component='div'
+                name='cep'
+                className='form-error2'
+              />
+              <Field name="cep" maxLength="9" >{({ field }) => (
+                <CurrencyFormat
+                  {...field}
+                  id='cep' 
+                  decimalSeparator=""
+                  format="#####-###"
+                  mask = "_"
+                  allowNegative={false}
+                  placeholder='Ex.: 00000-000'
+                />
+              )}
+              </Field>
+            </div>
+            <div className='flex-form'>
             <label>Endereço<span>*</span></label>
-            <input 
-              id='endereco'
-              type='text'
-              name='endereco'
-              placeholder='Ex.: Rua São José'
-            />
-            <div className='numero-bairro'>
-              <div>
-                <label>Número<span>*</span></label>
-                <input 
-                  id='n-residencial' 
+              <ErrorMessage
+                component='div'
+                name='endereco'
+                className='form-error2'
+              />
+              <Field
+                type='text'
+                id='endereco'
+                name='endereco'
+                placeholder='Ex.: Rua São José'
+                maxLength="45" 
+              />
+            </div>
+            <div className='two-forms'>
+              <div className='flex-form'>
+              <label>Número<span>*</span></label>
+                <ErrorMessage
+                  component='div'
+                  name='nresidencial'
+                  className='form-error2 numero-res'
+                />
+                <Field
+                  id='nresidencial' 
                   type='text'
-                  name='n-residencial' 
+                  name='nresidencial' 
                   placeholder='Ex.: 123'
+                  maxLength="5" 
                 />
               </div>
-              <div>
-                <label>Bairro<span>*</span></label>
-                <input 
-                  id='bairro'
+              <div className='flex-form'>
+              <label>Bairro<span>*</span></label>
+                <ErrorMessage
+                  component='div'
+                  name='bairro'
+                  className='form-error2'
+                />
+                <Field
                   type='text'
+                  id='bairro'
                   name='bairro'
                   placeholder='Ex.: Santo Amaro'
+                  maxLength="45" 
                 />
               </div>
             </div>
+            <div className='flex-form'>
             <label>CPF (Nota Fiscal)<span>*</span></label>
-            <CurrencyFormat
-              id='cpf-nota' 
-              name='cpf-nota' 
-              decimalSeparator=""
-              format="###.###.###-##"
-              mask = "_"
-              allowNegative={false}
-              placeholder='Ex.: 000.000.000-00'
-            />
-          </form>
-          <button className='button-continuar'>
-            Continuar
-          </button>
+              <ErrorMessage
+                component='div'
+                name='cpfnota'
+                className='form-error2'
+              />
+              <Field name="cpfnota" maxLength="14" >{({ field }) => (
+                <CurrencyFormat
+                  {...field}
+                  id='cpfnota' 
+                  decimalSeparator=""
+                  format="###.###.###-##"
+                  mask = "_"
+                  allowNegative={false}
+                  placeholder='Ex.: 000.000.000-00'
+                />
+              )}
+              </Field>
+            </div>
+            <button 
+              className='button-continuar' 
+              type='submit'
+            >
+              Continuar
+            </button>
+          </Form>
+          </Formik>
         </div>
         <div className='container-pagamento'>
           <div className='titulo'>
             <strong className='circulo-verde'>2</strong>
             <span>Pagamento</span>
           </div>
-          <form>
-            <label>Número do cartão<span>*</span></label>
-            <CurrencyFormat
-              id='cartao' 
-              name='cartao' 
-              decimalSeparator=""
-              format="#### #### #### ####"
-              mask = "_"
-              allowNegative={false}
-              placeholder='Ex.: 1234 1234 1234 1234'
-            />
-            <div className='validade-cvv'>
-              <div>
-                <label>Validade<span>*</span></label>
-                <CurrencyFormat
-                  id='validade' 
-                  name='validade' 
-                  decimalSeparator=""
-                  format="##/##"
-                  mask = "_"
-                  allowNegative={false}
-                  placeholder='MM/YY'
-                />
-              </div>
-              <div>
-                <label>CVV<span>*</span></label>
-                <CurrencyFormat
-                  id='cvv' 
-                  name='cvv' 
-                  decimalSeparator=""
-                  format="###"
-                  mask = "_"
-                  allowNegative={false}
-                  placeholder='CVV'
-                />
-              </div>
+
+          {JSON.stringify(cart.cart) !== "{}" && (
+            <div>
+              <div className="resumo-pagamento">
+                <span>Produtos ({itensCount} itens)</span>
+                <span>R$ {((subTotal).toFixed(2).toString().replaceAll(".", ","))}</span>  
+              </div>  
             </div>
-            <label>Nome do titular<span>*</span></label>
-            <input 
-              id='nome-titular'
-              type='text'
-              name='nome'
-              placeholder='Ex.: José da Silva'
-            />
-            <label>Nº de parcelas<span>*</span></label>
-            <select name="parcelas" id="parcelas" placeholder='--'>
-              <option value="1">1x</option>
-              <option value="2">2x</option>
-              <option value="3">3x</option>
-              <option value="4">4x</option>
-              <option value="5">5x</option>
-              <option value="6">6x</option>
-              <option value="7">7x</option>
-              <option value="8">8x</option>
-              <option value="9">9x</option>
-              <option value="10">10x</option>
-              <option value="11">11x</option>
-              <option value="12">12x</option>
-            </select>
-          </form>
-        </div>
-        <div>
-          <div className='container-resumo'>
-            <div className='titulo'>
-              <span>Resumo</span>
+          )}
+
+          {checkout && subTotal < 100 ? (
+            <>
+              <div className="resumo-pagamento">
+                <span>Frete</span>
+                <span>R$34,90</span>  
+              </div> 
+
+              <div className='linha-pagamento'>
+
+              </div>
+              <PayPal />
+            </>
+          ) : (
+          <>
+            <div className="resumo-pagamento">
+              <span>Frete</span>
+              <span>R$0,00</span>  
             </div>
-          </div>
-          <Link to='/' className='button-continuar'>
-            Comprar
-          </Link>
-          <Link to='/cart' className='button-voltar'>
-            Voltar
-          </Link>
+          </>
+          )}
         </div>
       </div>
     </section>

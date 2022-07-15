@@ -82,7 +82,7 @@ export const Home = () => {
       setCategoryValue(value);
     }
   }
-
+  
   return (
     <>
     <Helmet>
@@ -188,7 +188,7 @@ export const Home = () => {
           <p>© 2022 Copyright: GreenPet</p>
           <div className="footer-social">
             <div>
-            <a href="https://www.instagram.com/lojagreenpet_/" target="_blank">
+            <a href="https://www.instagram.com/lojagreenpet_/" target="_blank" rel="noopener noreferrer">
               <img src={Instagram} alt="instagram-greenpet"/>
             </a>
             </div>
