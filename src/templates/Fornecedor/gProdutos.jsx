@@ -149,10 +149,14 @@ export const GProdutos = () => {
                     <button 
                     className="button-delete"
                     onClick={function handleClickRemoveProducts(){
+                      setLoading(true)
                       Axios.post('https://greenpet-2022.herokuapp.com/products/del/fornecedor',{
                         imagem: products[key].imagem,
                       }).then((response) => {
-                        return response
+                        console.log(response)
+                        toast.success("Produto removido!")
+                        buscarProdutos();
+                        setLoading(false)
                       });
                     }} 
                     >
