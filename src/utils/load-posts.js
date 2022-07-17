@@ -4,8 +4,12 @@ export const loadPosts = async () => {
   const posts = await (url);
 
   const postsAndPhotos = await posts.json();
+
+  function func(a, b) {  
+    return 0.5 - Math.random();
+  } 
   
-  return postsAndPhotos;
+  return postsAndPhotos.sort(func);
 }
  
 

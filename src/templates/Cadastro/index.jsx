@@ -116,7 +116,7 @@ export const Cadastro = () => {
     </Helmet>
     <section>
       <div className='nav-main'>
-        <Link to='/'>
+        <Link to='/inicio'>
           <img src={LogoGreenPet} alt="greenpet" className='logo'/>
         </Link>
       </div>

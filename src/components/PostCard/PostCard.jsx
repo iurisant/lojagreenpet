@@ -16,6 +16,7 @@ export const PostCard = ({id, title, url, price, ammount, category, product}) =>
   }
 
   const cart = useCart()
+  
   const add = (product) => () =>{
     cart.addToCart(product)
   }

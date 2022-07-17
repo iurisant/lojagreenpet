@@ -1,12 +1,17 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useCart } from "../../hooks/useCart";
+import PaymentAproved from "../../assets/payment-aproved.svg"
+import { Link } from "react-router-dom";
 
 export default function Paypal() {
   const [loaded, setLoaded] = useState(false);
+  const [pago, setPago] = useState(false);
+
   const cart = useCart()
+
   const subTotal = Object.keys(cart.cart).reduce((prev, curr) => {
     return prev + (cart.cart[curr].product.valor_Uni * cart.cart[curr].quantity)
-  }, 0)
+  }, 0) 
 
   let paypalRef = useRef();
 
@@ -33,7 +38,7 @@ export default function Paypal() {
                   {
                     amount: {
                       currency_code: "BRL",
-                      value: (subTotal + 34.90),
+                      value: (subTotal),
                     },
                   },
                 ],
@@ -41,7 +46,11 @@ export default function Paypal() {
             },
             onApprove: async (data, actions) => {
               const order = await actions.order.capture();
+              setPago(true)
               console.log(order);
+            },
+            onError: (err) => {
+              console.log(err);
             },
           })
           .render(paypalRef);
@@ -52,8 +61,20 @@ export default function Paypal() {
   })
 
   return (
-    <div>
-      <div ref={v => (paypalRef = v)}></div>
-    </div>
+    <>
+      <div>
+        <div ref={v => (paypalRef = v)}></div>
+      </div>
+      {pago &&(
+        <div className='modal-pago'>
+          <strong>Compra realizada com sucesso!</strong>
+          <p>Você recebera o mais informações da compra, assim como codigo de rastreio no seu email. Fique atento!</p>
+          <img src={PaymentAproved} alt="pagamento-aprovado"/>
+          <Link to='/inicio'>
+            Voltar para o início
+          </Link>
+        </div>
+      )}
+    </>
   );
 }

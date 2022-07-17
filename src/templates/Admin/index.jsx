@@ -64,7 +64,7 @@ export const Admin = () => {
     
     <section className='container'>
       <div className='nav-main'>
-        <Link to='/'>
+        <Link to='/inicio'>
           <img src={LogoGreenPet} alt="greenpet" className='logo'/>
         </Link>
         <div className='login-cart'>

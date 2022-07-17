@@ -45,7 +45,7 @@ export const Cart = () => {
     
     <section className='container'>
       <div className='nav-main'>
-        <Link to='/'>
+        <Link to='/inicio'>
           <img src={LogoGreenPet} alt="greenpet" className='logo'/>
         </Link>
         <div className='login-cart'>
@@ -69,7 +69,7 @@ export const Cart = () => {
                 <span className='th-quantidade'>Quantidade</span>
                 <span className='th-valor'>Valor Uni.</span>
               </div>
-
+              <div className="container-scroll">
               {Object.keys(cart.cart).map(key =>{
                 return( 
                   <div className='flex-mycart cart-product' key={key}>
@@ -104,6 +104,7 @@ export const Cart = () => {
                   </div>
                 )}
               )}
+              </div>
             </div>
           </div> 
         )}
@@ -134,7 +135,7 @@ export const Cart = () => {
               </Link>
             </div>
             <div className='resumo-produto'>
-              <Link to='/' className="voltar-carrinho"> 
+              <Link to='/inicio' className="voltar-carrinho"> 
                 Voltar
               </Link>
             </div>
@@ -146,7 +147,7 @@ export const Cart = () => {
             <strong>Seu carrinho está vazio :(</strong>
             <span>Adicione produtos ao seu carrinho</span>
             <img src={BadCart} alt="greenpet" className='img-badcart'/>
-            <Link to='/' className='a-badcart'>
+            <Link to='/inicio' className='a-badcart'>
               <div className='button-additemcart'>
                 Adicionar itens ao carrinho
               </div>

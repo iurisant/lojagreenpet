@@ -40,7 +40,7 @@ export const GProdutos = () => {
       await Axios.post("https://greenpet-2022.herokuapp.com/getProdutos/fornecedor"/* "http://localhost:3001/getProdutos/fornecedor" */,{
       ids: idsProdutos
     }).then((response) => {
-      setProducts(response.data)
+      setProducts(response.data.sort().reverse())
     });
     }
   }
@@ -127,6 +127,7 @@ export const GProdutos = () => {
             </div>
             {products.length > 0 && (
             <>
+            <div className="container-scroll">
             {Object.keys(products).map(key =>{
               return(
                 <div className='flex-mycart cart-product2'>
@@ -145,13 +146,23 @@ export const GProdutos = () => {
                     <button className="button-edit">
                       Editar
                     </button>
-                    <button className="button-delete">
+                    <button 
+                    className="button-delete"
+                    onClick={function handleClickRemoveProducts(){
+                      Axios.post('https://greenpet-2022.herokuapp.com/products/del/fornecedor',{
+                        imagem: products[key].imagem,
+                      }).then((response) => {
+                        return response
+                      });
+                    }} 
+                    >
                       Remover
                     </button>
                   </div>
                 </div> 
               )
             })}
+            </div>
             </>
           )} 
           {products.length === 0  && (
@@ -162,7 +173,6 @@ export const GProdutos = () => {
             </>
           )} 
           </div>
-          {/* <button className='add-produto'>+ Adicionar</button> */}
         </div> 
           <div className='total-gprodutos'>
             <div className='title-gprodutos'>

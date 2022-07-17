@@ -5,6 +5,7 @@ export const CartContext = createContext()
 
 export const CartProvaider = ({children}) => {
   const [cart, setCart] = useState({})
+  
   useEffect(() => {
     const cartLocal = window.localStorage.getItem('cart')
     if(cartLocal){

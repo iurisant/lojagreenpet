@@ -1,6 +1,6 @@
 import './styles.css';
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState, useEffect, useCallback} from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
@@ -13,6 +13,7 @@ import { TextInput } from '../../components/NavBar/TextInput';
 import { Categoria } from '../../components/NavBar/Categoria';
 import { ButtonCart } from '../../components/NavBar/ButtonCart';
 import { ButtonUser } from '../../components/NavBar/ButtonUser';
+import { AuthContext } from '../../context/auth';
 import LogoGreenPet from '../../assets/logo_greenpet.svg';
 import SloganGreenPet from '../../assets/slogan_greenpet.svg';
 import Instagram from '../../assets/instagram.svg';
@@ -24,6 +25,7 @@ export const Home = () => {
   const [postsPerPage] = useState(25);
   const [searchValue, setSearchValue] = useState('');
   const [categoryValue, setCategoryValue] = useState('');
+  const { autenticated } = useContext(AuthContext);
 
   const noMorePosts = page + postsPerPage >= allPosts.length;
   
@@ -90,7 +92,7 @@ export const Home = () => {
     </Helmet>
     <section className='container'>
       <div className='nav-main'>
-        <Link to='/'>
+        <Link to='/inicio'>
           <img src={LogoGreenPet} alt="greenpet" className='logo'/>
         </Link>
         <div className='search-container'>
@@ -100,9 +102,16 @@ export const Home = () => {
           <Link to='/login' className='button-login' >
             <ButtonUser/>
           </Link>
-          <Link to='/cart' className='button-cart'>
-            <ButtonCart/>
-          </Link>
+          {autenticated ? (
+            <Link to='/cart' className='button-cart'>
+              <ButtonCart/>
+            </Link>
+          ): (<>
+            <Link to='/login' className='button-cart'>
+              <ButtonCart/>
+            </Link>
+          </>)}
+          
         </div>
       </div>
       <div className='nav-bar'>
@@ -178,9 +187,18 @@ export const Home = () => {
             </div>
           </div>
           <div className='footer-fornecedor'>
-            <Link to='/seja-fornecedor' className='button-fornecedor'>
-              TORNE-SE FORNECEDOR
-            </Link>  
+            {autenticated ? (
+              <Link to='/seja-fornecedor' className='button-fornecedor'>
+                TORNE-SE FORNECEDOR
+              </Link>  
+            ):(
+              <>
+                <Link to='/off/seja-fornecedor' className='button-fornecedor'>
+                  TORNE-SE FORNECEDOR
+                </Link>  
+              </>   
+            )}
+            
           </div>
         </div>
 

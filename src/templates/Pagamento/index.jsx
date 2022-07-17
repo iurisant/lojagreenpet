@@ -59,7 +59,7 @@ export const Pagamento = () => {
     
     <section className='container'>
       <div className='nav-main'>
-        <Link to='/'>
+        <Link to='/inicio'>
           <img src={LogoGreenPet} alt="greenpet" className='logo'/>
         </Link>
         <div className='login-cart'>
@@ -217,11 +217,11 @@ export const Pagamento = () => {
             </div>
           )}
 
-          {checkout && subTotal < 100 ? (
+          {checkout ? (
             <>
               <div className="resumo-pagamento">
                 <span>Frete</span>
-                <span>R$34,90</span>  
+                <span>Grátis</span>  
               </div> 
 
               <div className='linha-pagamento'>
@@ -233,7 +233,7 @@ export const Pagamento = () => {
           <>
             <div className="resumo-pagamento">
               <span>Frete</span>
-              <span>R$0,00</span>  
+              <span>R$</span>  
             </div>
           </>
           )}

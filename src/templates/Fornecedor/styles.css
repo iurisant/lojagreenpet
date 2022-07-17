@@ -233,6 +233,7 @@ label[for='imagem']{
   border-radius: 5px;
 
   font-weight: 600;
+  cursor: not-allowed;
 }
 .button-delete{
   height: 35px;
@@ -245,9 +246,31 @@ label[for='imagem']{
   color: #fff;
 
   font-weight: 600;
+  cursor: pointer;
 }
 
 .cart-product2{
   padding: 0px 20px;
   font-weight: 400;
+}
+
+.container-scroll{
+  max-height: 410px;
+  overflow-y: scroll;
+}
+.container-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container-scroll::-webkit-scrollbar-track {
+  background-color: #FFF;
+  border-left: 0.5px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 0px 0px 5px 0px;
+}
+
+.container-scroll::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  background-color: #a1a1a1;
 }

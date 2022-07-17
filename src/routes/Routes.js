@@ -8,16 +8,16 @@ export default function RouteWraper({component: Component, isPrivate, ...rest}){
   const token =  window.localStorage.getItem('token')
 
   if(!token || token === "false"){
-    if (!autenticated && isPrivate) {
+    if(!autenticated && isPrivate) {
       return (
-        <Redirect to="/login" />
+        <Redirect to="/" />
       );
     }
   }
 
-  if (autenticated && !isPrivate) {
+  if(autenticated && !isPrivate) {
     return (
-      <Redirect to="/" />
+      <Redirect to="/inicio" />
     );
   }
 
