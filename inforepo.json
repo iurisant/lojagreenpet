@@ -3,5 +3,7 @@
   "description": "Loja virtual criada como projeto de conclusão de curso do técnico",
   "language": "React, JavaScript, Css, NodeJs, MySQL, FireBase, Figma",
   "url": "https://i.imgur.com/IdeYtdB.png",
-  "status": "Concluído"
+  "status": "Concluído",
+  "site": "https://lojagreenpet-2022.web.app/",
+  "repositories": "https://github.com/iurisant/lojagreenpet"
 }
